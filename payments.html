@@ -1,0 +1,399 @@
+<!DOCTYPE html><html lang="en" class="light"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=block" rel="stylesheet"><script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script><script id="tailwind-config">try{
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "tertiary": "#000000",
+                    "tertiary-container": "#0b1c30",
+                    "secondary-fixed-dim": "#adc6ff",
+                    "tertiary-fixed": "#d3e4fe",
+                    "tertiary-fixed-dim": "#b7c8e1",
+                    "inverse-primary": "#bec6e0",
+                    "outline": "#76777d",
+                    "on-secondary-fixed-variant": "#004395",
+                    "inverse-on-surface": "#eff1f3",
+                    "error-container": "#ffdad6",
+                    "on-secondary-container": "#fefcff",
+                    "surface-tint": "#565e74",
+                    "background": "#f7f9fb",
+                    "on-error-container": "#93000a",
+                    "on-tertiary-container": "#75859d",
+                    "surface-variant": "#e0e3e5",
+                    "on-tertiary-fixed": "#0b1c30",
+                    "error": "#ba1a1a",
+                    "on-primary": "#ffffff",
+                    "on-secondary": "#ffffff",
+                    "on-surface": "#191c1e",
+                    "outline-variant": "#c6c6cd",
+                    "secondary": "#0058be",
+                    "on-primary-fixed-variant": "#3f465c",
+                    "on-error": "#ffffff",
+                    "on-primary-fixed": "#131b2e",
+                    "secondary-container": "#2170e4",
+                    "primary": "#000000",
+                    "on-surface-variant": "#45464d",
+                    "surface-container-highest": "#e0e3e5",
+                    "secondary-fixed": "#d8e2ff",
+                    "on-secondary-fixed": "#001a42",
+                    "on-tertiary-fixed-variant": "#38485d",
+                    "surface-container": "#eceef0",
+                    "on-background": "#191c1e",
+                    "surface-dim": "#d8dadc",
+                    "primary-fixed-dim": "#bec6e0",
+                    "on-tertiary": "#ffffff",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-bright": "#f7f9fb",
+                    "surface-container-low": "#f2f4f6",
+                    "primary-fixed": "#dae2fd",
+                    "inverse-surface": "#2d3133",
+                    "primary-container": "#131b2e",
+                    "on-primary-container": "#7c839b",
+                    "surface": "#f7f9fb",
+                    "surface-container-high": "#e6e8ea"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "xl": "32px",
+                    "md": "16px",
+                    "sm": "8px",
+                    "container-max": "1280px",
+                    "margin-mobile": "16px",
+                    "lg": "24px",
+                    "base": "4px",
+                    "gutter": "24px",
+                    "xs": "4px"
+            },
+            "fontFamily": {
+                    "body-sm": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "label-caps": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "body-md": ["Inter"],
+                    "data-mono": ["JetBrains Mono"],
+                    "headline-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "data-mono": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    }catch(_e){}</script><meta charset="utf-8"></head><body class="bg-background text-on-background font-body-md min-h-screen flex">
+<!-- SideNavBar -->
+<aside class="w-[280px] h-screen fixed left-0 top-0 bg-surface-container-low border-r border-outline-variant flex flex-col gap-sm p-md z-40 hidden md:flex">
+<div class="mb-xl px-md">
+<h1 class="font-headline-md text-headline-md font-bold text-primary">Family Finance</h1>
+<p class="font-label-caps text-label-caps text-on-surface-variant">Global Overview</p>
+</div>
+<nav class="flex-grow flex flex-col gap-xs">
+<a href="#" class="flex items-center gap-md px-md py-sm transition-all duration-200 text-on-surface-variant hover:bg-surface-variant">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-caps text-label-caps">Dashboard</span>
+</a>
+<a href="#" class="flex items-center gap-md px-md py-sm transition-all duration-200 text-on-surface-variant hover:bg-surface-variant">
+<span class="material-symbols-outlined">group</span>
+<span class="font-label-caps text-label-caps">Family Hub</span>
+</a>
+<a href="#" class="flex items-center gap-md px-md py-sm transition-all duration-200 bg-secondary-container text-on-secondary-container rounded-lg">
+<span class="material-symbols-outlined">account_balance_wallet</span>
+<span class="font-label-caps text-label-caps">Payments</span>
+</a>
+<a href="#" class="flex items-center gap-md px-md py-sm transition-all duration-200 text-on-surface-variant hover:bg-surface-variant">
+<span class="material-symbols-outlined">receipt_long</span>
+<span class="font-label-caps text-label-caps">Transactions</span>
+</a>
+<a href="#" class="flex items-center gap-md px-md py-sm transition-all duration-200 text-on-surface-variant hover:bg-surface-variant">
+<span class="material-symbols-outlined">analytics</span>
+<span class="font-label-caps text-label-caps">Analytics</span>
+</a>
+<a href="#" class="flex items-center gap-md px-md py-sm transition-all duration-200 text-on-surface-variant hover:bg-surface-variant">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-caps text-label-caps">Settings</span>
+</a>
+</nav>
+<button class="mt-auto mx-md bg-primary text-on-primary py-sm rounded-lg font-label-caps text-label-caps hover:opacity-90 transition-opacity">
+            Export Report
+        </button>
+</aside>
+<div class="flex-grow md:ml-[280px] flex flex-col min-h-screen">
+<!-- TopNavBar -->
+<header class="w-full h-16 sticky top-0 z-50 bg-surface-container-lowest border-b border-outline-variant">
+<div class="flex justify-between items-center px-lg max-w-container-max mx-auto h-full">
+<div class="flex items-center gap-md">
+<span class="md:hidden material-symbols-outlined cursor-pointer">menu</span>
+<span class="font-headline-md text-headline-md font-bold text-primary">FamFinance</span>
+</div>
+<div class="hidden md:flex flex-grow max-w-md mx-xl">
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline">search</span>
+<input type="text" placeholder="Search payments..." class="w-full pl-10 pr-4 py-2 bg-surface-container rounded-full border-none focus:ring-2 focus:ring-secondary text-body-sm outline-none">
+</div>
+</div>
+<div class="flex items-center gap-lg">
+<span class="material-symbols-outlined cursor-pointer text-on-surface-variant hover:text-secondary transition-colors">notifications</span>
+<span class="material-symbols-outlined cursor-pointer text-on-surface-variant hover:text-secondary transition-colors">dark_mode</span>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-outline-variant">
+<img alt="User profile" class="w-full h-full object-cover" data-alt="A professional headshot of a family man in his late 30s, smiling warmly against a soft-focus architectural background. The image has a clean, airy, high-key lighting style that complements a corporate light-mode UI, using natural tones and sharp focus on the face." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBx7oc9AhsFgyl7ii79mN6tFhKskeTe0UUQSYrmiN5vxKOPvgAQYAbiLbsb6yq0GlrK3kfQJhm9uwRD0AUPOG9XjxKC1kKbmkWsOR7om50JDVqGI2N_1lqe-zQU5KRT5g9DYcm4gASzhX6vAkVGVq7XUq4qLlmZskS-_COVLnivoa_mcABAUw-vzMptlskz0n2h-bgVZBOd3PsWbfLCuqCjS_UW9CJU3gyzkOrj0UIPyEtfuyJz2TxcBsSklab3DQx7n9v26MsKggP1">
+</div>
+</div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="flex-grow p-lg max-w-container-max mx-auto w-full">
+<div class="mb-xl">
+<h2 class="font-headline-lg text-headline-lg text-primary mb-xs">Payments &amp; Transfers</h2>
+<p class="font-body-md text-on-surface-variant">Manage your family's recurring bills and immediate transfers in one secure place.</p>
+</div>
+<!-- Bento Grid Content -->
+<div class="bento-grid">
+<!-- Recurring Bills (Left Column - Large) -->
+<div class="col-span-12 lg:col-span-8 bg-surface-container-lowest border border-outline-variant rounded-xl p-lg h-fit">
+<div class="flex justify-between items-center mb-lg">
+<h3 class="font-label-caps text-label-caps text-primary flex items-center gap-sm">
+<span class="material-symbols-outlined text-secondary">autorenew</span>
+                            RECURRING BILLS
+                        </h3>
+<span class="text-body-sm text-on-surface-variant font-medium">4 Pending Action</span>
+</div>
+<div class="space-y-md">
+<!-- Bill Item 1 -->
+<div class="flex flex-col sm:flex-row sm:items-center justify-between p-md border border-outline-variant rounded-lg hover:border-secondary transition-colors group">
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 bg-surface-container rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">bolt</span>
+</div>
+<div>
+<h4 class="font-body-md font-semibold text-primary">City Power &amp; Light</h4>
+<p class="font-body-sm text-on-surface-variant">Due in 3 days • Utilities</p>
+</div>
+</div>
+<div class="mt-md sm:mt-0 flex items-center justify-between sm:justify-end gap-xl">
+<div class="text-right">
+<p class="font-data-mono text-data-mono text-primary">$142.50</p>
+<p class="font-label-caps text-[10px] text-error font-bold">URGENT</p>
+</div>
+<a class="flex items-center gap-xs px-md py-sm bg-primary text-on-primary rounded-lg font-label-caps text-label-caps hover:bg-secondary transition-all" href="https://portal.citypower.com" target="_blank">
+                                    Pay Now
+                                    <span class="material-symbols-outlined text-[18px]">open_in_new</span>
+</a>
+</div>
+</div>
+<!-- Bill Item 2 -->
+<div class="flex flex-col sm:flex-row sm:items-center justify-between p-md border border-outline-variant rounded-lg hover:border-secondary transition-colors">
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 bg-surface-container rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">stream</span>
+</div>
+<div>
+<h4 class="font-body-md font-semibold text-primary">StreamMax Family Plan</h4>
+<p class="font-body-sm text-on-surface-variant">Due in 12 days • Subscription</p>
+</div>
+</div>
+<div class="mt-md sm:mt-0 flex items-center justify-between sm:justify-end gap-xl">
+<div class="text-right">
+<p class="font-data-mono text-data-mono text-primary">$19.99</p>
+<p class="font-label-caps text-[10px] text-on-surface-variant font-bold">UPCOMING</p>
+</div>
+<a class="flex items-center gap-xs px-md py-sm border border-primary text-primary rounded-lg font-label-caps text-label-caps hover:bg-surface-container transition-all" href="#">
+                                    Pay Now
+                                    <span class="material-symbols-outlined text-[18px]">open_in_new</span>
+</a>
+</div>
+</div>
+<!-- Bill Item 3 -->
+<div class="flex flex-col sm:flex-row sm:items-center justify-between p-md border border-outline-variant rounded-lg hover:border-secondary transition-colors">
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 bg-surface-container rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">house</span>
+</div>
+<div>
+<h4 class="font-body-md font-semibold text-primary">Metro Housing Prop.</h4>
+<p class="font-body-sm text-on-surface-variant">Due in 5 days • Rent</p>
+</div>
+</div>
+<div class="mt-md sm:mt-0 flex items-center justify-between sm:justify-end gap-xl">
+<div class="text-right">
+<p class="font-data-mono text-data-mono text-primary">$2,450.00</p>
+<p class="font-label-caps text-[10px] text-on-surface-variant font-bold">UPCOMING</p>
+</div>
+<a class="flex items-center gap-xs px-md py-sm bg-primary text-on-primary rounded-lg font-label-caps text-label-caps hover:bg-secondary transition-all" href="https://rentportal.example" target="_blank">
+                                    Pay Now
+                                    <span class="material-symbols-outlined text-[18px]">open_in_new</span>
+</a>
+</div>
+</div>
+</div>
+<button class="w-full mt-lg py-md border-t border-outline-variant text-secondary font-label-caps text-label-caps hover:bg-surface-container-low transition-colors rounded-b-xl">
+                        VIEW ALL RECURRING BILLS
+                    </button>
+</div>
+<!-- Manual Transfer (Right Column - Small) -->
+<div class="col-span-12 lg:col-span-4 bg-primary text-on-primary rounded-xl p-lg relative overflow-hidden shadow-xl">
+<!-- Subtle Background Decorative Element -->
+<div class="absolute -right-16 -top-16 w-48 h-48 bg-secondary rounded-full opacity-20 blur-3xl"></div>
+<h3 class="font-label-caps text-label-caps mb-lg relative z-10 flex items-center gap-sm">
+<span class="material-symbols-outlined">send</span>
+                        MANUAL TRANSFER
+                    </h3>
+<form class="space-y-md relative z-10">
+<div>
+<label class="block font-label-caps text-[10px] mb-base opacity-70">RECIPIENT NAME</label>
+<input class="w-full bg-white/10 border border-white/20 rounded-lg px-md py-sm text-white placeholder-white/40 focus:ring-2 focus:ring-secondary focus:border-transparent outline-none transition-all" placeholder="e.g. Sarah Miller" type="text">
+</div>
+<div class="grid grid-cols-2 gap-md">
+<div>
+<label class="block font-label-caps text-[10px] mb-base opacity-70">AMOUNT ($)</label>
+<input class="w-full bg-white/10 border border-white/20 rounded-lg px-md py-sm text-white placeholder-white/40 focus:ring-2 focus:ring-secondary focus:border-transparent outline-none transition-all" placeholder="0.00" type="number">
+</div>
+<div>
+<label class="block font-label-caps text-[10px] mb-base opacity-70">CURRENCY</label>
+<select class="w-full bg-white/10 border border-white/20 rounded-lg px-md py-sm text-white focus:ring-2 focus:ring-secondary outline-none appearance-none">
+<option class="bg-primary">USD</option>
+<option class="bg-primary">EUR</option>
+<option class="bg-primary">GBP</option>
+</select>
+</div>
+</div>
+<div>
+<label class="block font-label-caps text-[10px] mb-base opacity-70">ACCOUNT / IBAN</label>
+<input class="w-full bg-white/10 border border-white/20 rounded-lg px-md py-sm text-white placeholder-white/40 focus:ring-2 focus:ring-secondary focus:border-transparent outline-none transition-all" placeholder="XXXX XXXX XXXX 4902" type="text">
+</div>
+<button class="w-full py-md bg-secondary text-on-secondary rounded-lg font-label-caps text-label-caps hover:brightness-110 transition-all shadow-lg active:scale-[0.98]" type="submit">
+                            INITIATE TRANSFER
+                        </button>
+</form>
+</div>
+<!-- Recent Payments Tracking (Bottom Row - Wide) -->
+<div class="col-span-12 bg-surface-container-low border border-outline-variant rounded-xl p-lg">
+<h3 class="font-label-caps text-label-caps text-primary mb-lg flex items-center gap-sm">
+<span class="material-symbols-outlined text-secondary">analytics</span>
+                        PAYMENT TRACKING
+                    </h3>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead>
+<tr class="border-b border-outline-variant text-on-surface-variant font-label-caps text-[11px]">
+<th class="pb-md font-bold uppercase tracking-wider">Date</th>
+<th class="pb-md font-bold uppercase tracking-wider">Recipient</th>
+<th class="pb-md font-bold uppercase tracking-wider">Category</th>
+<th class="pb-md font-bold uppercase tracking-wider">Amount</th>
+<th class="pb-md font-bold uppercase tracking-wider">Status</th>
+<th class="pb-md font-bold uppercase tracking-wider">Action</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/30">
+<tr class="hover:bg-surface-variant/50 transition-colors">
+<td class="py-md font-data-mono text-data-mono">Nov 14, 2024</td>
+<td class="py-md font-semibold text-primary">Amazon Services</td>
+<td class="py-md text-on-surface-variant">Shopping</td>
+<td class="py-md font-data-mono text-right pr-lg">$45.82</td>
+<td class="py-md">
+<span class="px-sm py-[2px] bg-green-100 text-green-700 text-[11px] font-bold rounded-full">SETTLED</span>
+</td>
+<td class="py-md">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-secondary">receipt</button>
+</td>
+</tr>
+<tr class="hover:bg-surface-variant/50 transition-colors">
+<td class="py-md font-data-mono text-data-mono">Nov 15, 2024</td>
+<td class="py-md font-semibold text-primary">Thomas Wilson</td>
+<td class="py-md text-on-surface-variant">Personal</td>
+<td class="py-md font-data-mono text-right pr-lg">$250.00</td>
+<td class="py-md">
+<span class="px-sm py-[2px] bg-yellow-100 text-yellow-700 text-[11px] font-bold rounded-full">PENDING</span>
+</td>
+<td class="py-md">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-secondary">visibility</button>
+</td>
+</tr>
+<tr class="hover:bg-surface-variant/50 transition-colors">
+<td class="py-md font-data-mono text-data-mono">Nov 15, 2024</td>
+<td class="py-md font-semibold text-primary">Verizon Mobile</td>
+<td class="py-md text-on-surface-variant">Utilities</td>
+<td class="py-md font-data-mono text-right pr-lg">$89.00</td>
+<td class="py-md">
+<span class="px-sm py-[2px] bg-blue-100 text-blue-700 text-[11px] font-bold rounded-full">INITIATED</span>
+</td>
+<td class="py-md">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-secondary">receipt</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full py-lg mt-auto bg-surface-container border-t border-outline-variant">
+<div class="flex flex-col md:flex-row justify-between items-center px-lg max-w-container-max mx-auto gap-md">
+<span class="font-label-caps text-label-caps text-primary">FAMFINANCE</span>
+<p class="text-on-surface-variant font-body-sm text-body-sm">© 2024 FamFinance. Secure &amp; Encrypted.</p>
+<div class="flex gap-md">
+<a class="text-on-surface-variant hover:text-secondary transition-colors font-body-sm text-body-sm" href="#">Security Policy</a>
+<a class="text-on-surface-variant hover:text-secondary transition-colors font-body-sm text-body-sm underline" href="#">Terms of Service</a>
+<a class="text-on-surface-variant hover:text-secondary transition-colors font-body-sm text-body-sm" href="#">Help Center</a>
+</div>
+</div>
+</footer>
+</div>
+<!-- Mobile Bottom Navigation Shell -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full bg-surface-container-lowest border-t border-outline-variant flex justify-around items-center py-sm px-md z-50">
+<a class="flex flex-col items-center gap-xs text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-[10px] font-label-caps">Home</span>
+</a>
+<a class="flex flex-col items-center gap-xs text-secondary" href="#">
+<span class="material-symbols-outlined">account_balance_wallet</span>
+<span class="text-[10px] font-label-caps">Pay</span>
+</a>
+<a class="flex flex-col items-center gap-xs text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">receipt_long</span>
+<span class="text-[10px] font-label-caps">Log</span>
+</a>
+<a class="flex flex-col items-center gap-xs text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-[10px] font-label-caps">Menu</span>
+</a>
+</nav>
+<script>
+        // Simple micro-interaction for form submission
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const btn = this.querySelector('button');
+            const originalText = btn.innerText;
+            btn.innerText = 'PROCESSING...';
+            btn.classList.add('opacity-80');
+            btn.disabled = true;
+            
+            setTimeout(() => {
+                btn.innerText = 'SUCCESS';
+                btn.classList.replace('bg-secondary', 'bg-green-600');
+                
+                setTimeout(() => {
+                    btn.innerText = originalText;
+                    btn.classList.replace('bg-green-600', 'bg-secondary');
+                    btn.classList.remove('opacity-80');
+                    btn.disabled = false;
+                    this.reset();
+                }, 2000);
+            }, 1500);
+        });
+    </script>
+</body></html>
