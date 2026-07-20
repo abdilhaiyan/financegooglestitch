@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=block" rel="stylesheet"/><script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script><script id="tailwind-config">try{
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "tertiary": "#000000",
+                    "tertiary-container": "#0b1c30",
+                    "secondary-fixed-dim": "#adc6ff",
+                    "tertiary-fixed": "#d3e4fe",
+                    "tertiary-fixed-dim": "#b7c8e1",
+                    "inverse-primary": "#bec6e0",
+                    "outline": "#76777d",
+                    "on-secondary-fixed-variant": "#004395",
+                    "inverse-on-surface": "#eff1f3",
+                    "error-container": "#ffdad6",
+                    "on-secondary-container": "#fefcff",
+                    "surface-tint": "#565e74",
+                    "background": "#f7f9fb",
+                    "on-error-container": "#93000a",
+                    "on-tertiary-container": "#75859d",
+                    "surface-variant": "#e0e3e5",
+                    "on-tertiary-fixed": "#0b1c30",
+                    "error": "#ba1a1a",
+                    "on-primary": "#ffffff",
+                    "on-secondary": "#ffffff",
+                    "on-surface": "#191c1e",
+                    "outline-variant": "#c6c6cd",
+                    "secondary": "#0058be",
+                    "on-primary-fixed-variant": "#3f465c",
+                    "on-error": "#ffffff",
+                    "on-primary-fixed": "#131b2e",
+                    "secondary-container": "#2170e4",
+                    "primary": "#000000",
+                    "on-surface-variant": "#45464d",
+                    "surface-container-highest": "#e0e3e5",
+                    "secondary-fixed": "#d8e2ff",
+                    "on-secondary-fixed": "#001a42",
+                    "on-tertiary-fixed-variant": "#38485d",
+                    "surface-container": "#eceef0",
+                    "on-background": "#191c1e",
+                    "surface-dim": "#d8dadc",
+                    "primary-fixed-dim": "#bec6e0",
+                    "on-tertiary": "#ffffff",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-bright": "#f7f9fb",
+                    "surface-container-low": "#f2f4f6",
+                    "primary-fixed": "#dae2fd",
+                    "inverse-surface": "#2d3133",
+                    "primary-container": "#131b2e",
+                    "on-primary-container": "#7c839b",
+                    "surface": "#f7f9fb",
+                    "surface-container-high": "#e6e8ea"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "xl": "32px",
+                    "md": "16px",
+                    "sm": "8px",
+                    "container-max": "1280px",
+                    "margin-mobile": "16px",
+                    "lg": "24px",
+                    "base": "4px",
+                    "gutter": "24px",
+                    "xs": "4px"
+            },
+            "fontFamily": {
+                    "body-sm": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "label-caps": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "body-md": ["Inter"],
+                    "data-mono": ["JetBrains Mono"],
+                    "headline-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "data-mono": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    }catch(_e){}</script></head><body class="bg-background text-on-surface font-body-md selection:bg-secondary-container selection:text-on-secondary-container">
+<!-- Settings Modal (Backend Configuration) -->
+<div class="fixed inset-0 z-[100] hidden items-center justify-center bg-black/50 backdrop-blur-sm px-md" id="settingsModal">
+<div class="bg-surface-container-lowest w-full max-w-md rounded-xl shadow-xl p-lg border border-outline-variant">
+<div class="flex justify-between items-center mb-md">
+<h3 class="font-headline-md text-headline-md text-primary">Backend Configuration</h3>
+<button class="text-on-surface-variant hover:text-primary transition-colors" onclick="toggleSettingsModal()">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<p class="text-body-sm text-on-surface-variant mb-lg">Provide your Google Apps Script Web App URL to enable cloud synchronization with Google Sheets.</p>
+<div class="space-y-md">
+<div>
+<label class="block text-label-caps font-label-caps text-on-surface-variant mb-xs" for="appsScriptUrl">Apps Script Web App URL</label>
+<input class="w-full bg-surface-container-low border border-outline-variant rounded-lg px-md py-sm text-body-sm focus:ring-secondary focus:border-secondary" id="appsScriptUrl" placeholder="https://script.google.com/macros/s/.../exec" type="url"/>
+</div>
+<div class="flex gap-md pt-md">
+<button class="flex-1 bg-primary text-on-primary py-md rounded-xl font-label-caps text-label-caps hover:opacity-90 transition-opacity" onclick="saveBackendUrl()">Save Configuration</button>
+<button class="flex-1 border border-outline text-on-surface-variant py-md rounded-xl font-label-caps text-label-caps hover:bg-surface-container-high transition-colors" onclick="toggleSettingsModal()">Cancel</button>
+</div>
+</div>
+</div>
+</div>
+<!-- TopNavBar -->
+<header class="w-full h-16 sticky top-0 z-50 bg-surface-container-lowest border-b border-outline-variant">
+<div class="flex justify-between items-center px-lg max-w-container-max mx-auto h-full">
+<div class="flex items-center gap-md">
+<span class="md:hidden material-symbols-outlined cursor-pointer">menu</span>
+<span class="font-headline-md text-headline-md font-bold text-primary">FamFinance</span>
+</div>
+<div class="flex items-center gap-sm px-sm py-1 bg-surface-container rounded-full border border-outline-variant cursor-pointer hover:bg-surface-variant transition-colors group" id="sheets-connection-status">
+<span class="material-symbols-outlined text-[18px] text-green-700">database</span>
+<span class="text-[11px] font-label-caps text-on-surface-variant">Sheets Connected</span>
+<div class="hidden group-hover:block absolute top-full mt-2 p-md bg-surface-container-lowest border border-outline-variant rounded-lg shadow-xl z-50 w-64">
+<p class="text-body-sm mb-sm">Apps Script Web App URL:</p>
+<input class="w-full text-[10px] p-xs bg-surface-container border border-outline-variant rounded" id="web-app-url" placeholder="https://script.google.com/..." type="text"/>
+</div>
+</div><div class="hidden md:flex flex-grow max-w-md mx-xl">
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-surface-container rounded-full border-none focus:ring-2 focus:ring-secondary text-body-sm outline-none" placeholder="Search payments..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-lg">
+<span class="material-symbols-outlined cursor-pointer text-on-surface-variant hover:text-secondary transition-colors">notifications</span>
+<span class="material-symbols-outlined cursor-pointer text-on-surface-variant hover:text-secondary transition-colors">dark_mode</span>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-outline-variant">
+<img alt="User profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCBFODp5j6aJ7dy4PWkWIDCxZzTUFg0QAyI-K-41OjH8IBdOzHE-ASpGXBthWSFw5fAxKgi0qnzuqemtavhm0i26dofGP4wO659J4KNDI_Q5MN5v_nsEGi5MlRlc5VVRCEliVOvVhN5mkvGQbjOI0umsvtbEOaskkGTv-Bm7VdPuLz-9IWDP5VgEqYM4fbzRsf1RKsrrg8kXrORxcbyvEWii5FBigZZBIKAAYf6_8WXxQtk0Jw9vtkLoQGUR3T5ikLrdZT5yzxRoSC9"/>
+</div>
+</div>
+</div>
+</header>
+<!-- SideNavBar -->
+<aside class="w-[280px] h-screen fixed left-0 top-0 bg-surface-container-low border-r border-outline-variant flex flex-col gap-sm p-md z-40 hidden md:flex">
+<div class="mb-xl px-md">
+<h1 class="font-headline-md text-headline-md font-bold text-primary">Family Finance</h1>
+<p class="font-label-caps text-label-caps text-on-surface-variant">Global Overview</p>
+</div>
+<nav class="flex-grow flex flex-col gap-xs">
+<a class="flex items-center gap-md px-md py-sm transition-all duration-200 text-on-surface-variant hover:bg-surface-variant" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-caps text-label-caps">Dashboard</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm transition-all duration-200 text-on-surface-variant hover:bg-surface-variant" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="font-label-caps text-label-caps">Family Hub</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm transition-all duration-200 text-on-surface-variant hover:bg-surface-variant" href="#">
+<span class="material-symbols-outlined">account_balance_wallet</span>
+<span class="font-label-caps text-label-caps">Payments</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm transition-all duration-200 bg-secondary-container text-on-secondary-container rounded-lg" href="#">
+<span class="material-symbols-outlined">receipt_long</span>
+<span class="font-label-caps text-label-caps">Transactions</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm transition-all duration-200 text-on-surface-variant hover:bg-surface-variant" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span class="font-label-caps text-label-caps">Analytics</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm transition-all duration-200 text-on-surface-variant hover:bg-surface-variant" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-caps text-label-caps">Settings</span>
+</a>
+</nav>
+<button class="mt-auto mx-md bg-primary text-on-primary py-sm rounded-lg font-label-caps text-label-caps hover:opacity-90 transition-opacity" id="exportBtn">
+            Export Report
+        </button>
+</aside>
+<!-- Main Content -->
+<main class="flex-grow p-lg max-w-container-max mx-auto w-full md:ml-[280px]">
+<!-- Page Header & Import Section -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-md"><div>
+<h2 class="font-headline-lg text-headline-lg text-primary mb-xs">Transaction Manager</h2>
+<p class="font-body-md text-on-surface-variant">Review, reconcile, and import your family's global transaction ledger.</p>
+</div>
+<div class="flex items-center gap-sm">
+<button class="flex items-center gap-xs px-md py-sm bg-primary text-on-primary rounded-lg font-label-caps text-label-caps hover:bg-secondary transition-all" id="importBtn">
+<span class="material-symbols-outlined text-[18px]">upload_file</span>
+Import CSV
+</button>
+</div></div>
+<!-- Import Dropzone -->
+<div class="hidden border-2 border-dashed border-outline-variant bg-surface-container-low rounded-xl p-xl flex-col items-center justify-center text-center transition-all" id="dropzone">
+<div class="w-16 h-16 bg-secondary-container text-on-secondary-container rounded-full flex items-center justify-center mb-md">
+<span class="material-symbols-outlined text-[32px]">file_upload</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-primary">Drop CSV Files Here</h3>
+<p class="text-on-surface-variant font-body-md mt-sm max-w-md mx-auto">Upload bank statements. We'll automatically append Unique IDs and sync to your Google Sheet.</p>
+<input accept=".csv" class="hidden" id="fileInput" type="file"/>
+<div class="flex gap-md mt-lg">
+<button class="px-lg py-sm bg-primary text-on-primary rounded-lg font-label-caps text-label-caps" onclick="document.getElementById('fileInput').click()">Select File</button>
+<button class="px-lg py-sm border border-outline text-on-surface-variant rounded-lg font-label-caps text-label-caps" onclick="toggleDropzone()">Cancel</button>
+</div>
+</div>
+<!-- Filters & Search -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-md items-center bg-surface-container-lowest border border-outline-variant p-lg rounded-xl shadow-sm">
+<div class="lg:col-span-5 flex items-center bg-surface-container-low rounded-lg px-md py-sm border border-outline-variant">
+<span class="material-symbols-outlined text-on-surface-variant mr-sm">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-body-md w-full" id="searchInput" placeholder="Search by merchant, ID, or amount..." type="text"/>
+</div>
+<div class="lg:col-span-2">
+<select class="w-full bg-surface-container-low border border-outline-variant rounded-lg px-md py-sm text-body-sm focus:ring-secondary focus:border-secondary">
+<option>All Categories</option>
+<option>Groceries</option>
+<option>Utilities</option>
+<option>Entertainment</option>
+<option>Health</option>
+<option>Income</option>
+</select>
+</div>
+<div class="lg:col-span-2">
+<select class="w-full bg-surface-container-low border border-outline-variant rounded-lg px-md py-sm text-body-sm focus:ring-secondary focus:border-secondary">
+<option>Last 30 Days</option>
+<option>Year to Date</option>
+<option>2023 Overview</option>
+<option>Custom Range</option>
+</select>
+</div>
+<div class="lg:col-span-1">
+<button class="w-full flex items-center justify-center gap-xs px-md py-sm border border-outline-variant rounded-lg text-on-surface-variant hover:bg-surface-variant transition-colors">
+<span class="material-symbols-outlined text-[18px]">filter_list</span>
+<span class="text-label-caps">Filters</span>
+</button>
+</div>
+<div class="lg:col-span-2 flex justify-end gap-sm">
+<span class="text-body-sm text-on-surface-variant" id="entryCount">Showing <strong>0</strong> entries</span>
+</div>
+</div>
+<!-- Data Grid -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden shadow-sm flex flex-col min-h-[400px] bg-surface-container-low">
+<div class="overflow-x-auto flex-1">
+<table class="w-full text-left border-collapse" id="transactionTable">
+<thead class="sticky top-0 bg-surface-container-low z-10">
+<tr class="border-b border-outline-variant">
+<th class="px-md py-sm font-label-caps text-label-caps text-on-surface-variant">Date</th>
+<th class="px-md py-sm font-label-caps text-label-caps text-on-surface-variant">Merchant</th>
+<th class="px-md py-sm font-label-caps text-label-caps text-on-surface-variant">Category</th>
+<th class="px-md py-sm font-label-caps text-label-caps text-on-surface-variant">Unique ID</th>
+<th class="px-md py-sm font-label-caps text-label-caps text-on-surface-variant">Status</th>
+<th class="px-md py-sm font-label-caps text-label-caps text-on-surface-variant text-right">Amount</th>
+<th class="px-md py-sm font-label-caps text-label-caps text-on-surface-variant text-center">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant" id="tableBody">
+<!-- Data will be loaded here -->
+<tr>
+<td class="px-md py-xl text-center text-on-surface-variant italic" colspan="7">
+<div class="flex flex-col items-center gap-sm">
+<span class="material-symbols-outlined text-48 animate-pulse-soft">sync</span>
+<p class="">Initialize your backend settings to fetch transactions.</p>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination Footer -->
+<div class="p-md bg-surface-container-low border-t border-outline-variant flex justify-between items-center">
+<div class="flex items-center gap-sm">
+<button class="p-2 hover:bg-surface-variant rounded-lg transition-colors disabled:opacity-50" disabled="">
+<span class="material-symbols-outlined text-[20px]">chevron_left</span>
+</button>
+<div class="flex gap-1" id="paginationControls">
+<button class="w-8 h-8 flex items-center justify-center bg-secondary text-on-secondary rounded-lg text-body-sm font-bold">1</button>
+</div>
+<button class="p-2 hover:bg-surface-variant rounded-lg transition-colors">
+<span class="material-symbols-outlined text-[20px]">chevron_right</span>
+</button>
+</div>
+<div class="text-body-sm text-on-surface-variant">
+                Rows per page: 
+                <select class="bg-transparent border-none focus:ring-0 text-body-sm font-bold ml-1">
+<option>25</option>
+<option>50</option>
+<option>100</option>
+</select>
+</div>
+</div>
+</div>
+<!-- Footer -->
+<footer class="w-full py-lg mt-auto bg-surface-container border-t border-outline-variant">
+<div class="flex flex-col md:flex-row justify-between items-center px-lg max-w-container-max mx-auto gap-md">
+<span class="font-label-caps text-label-caps text-primary">FAMFINANCE</span>
+<p class="text-on-surface-variant font-body-sm text-body-sm">© 2024 FamFinance. Secure &amp; Encrypted.</p>
+<div class="flex gap-md">
+<a class="text-on-surface-variant hover:text-secondary transition-colors font-body-sm text-body-sm" href="#">Security Policy</a>
+<a class="text-on-surface-variant hover:text-secondary transition-colors font-body-sm text-body-sm underline" href="#">Terms of Service</a>
+<a class="text-on-surface-variant hover:text-secondary transition-colors font-body-sm text-body-sm" href="#">Help Center</a>
+</div>
+</div>
+</footer>
+</main>
+<!-- Scripts for UI & Backend Logic -->
+<script>
+    // State management
+    let transactions = [];
+    let isFetching = false;
+
+    // Theme Toggle
+    const themeToggle = document.getElementById('themeToggle');
+    themeToggle.addEventListener('click', () => {
+        document.documentElement.classList.toggle('dark');
+        const icon = themeToggle.querySelector('.material-symbols-outlined');
+        icon.textContent = document.documentElement.classList.contains('dark') ? 'light_mode' : 'dark_mode';
+    });
+
+    // Modal & Settings Handling
+    function toggleSettingsModal() {
+        const modal = document.getElementById('settingsModal');
+        modal.classList.toggle('hidden');
+        modal.classList.toggle('flex');
+        
+        if (!modal.classList.contains('hidden')) {
+            const savedUrl = localStorage.getItem('famFinance_appsScriptUrl') || '';
+            document.getElementById('appsScriptUrl').value = savedUrl;
+        }
+    }
+
+    function saveBackendUrl() {
+        const urlInput = document.getElementById('appsScriptUrl');
+        const url = urlInput.value.trim();
+        if (url && url.startsWith('http')) {
+            localStorage.setItem('famFinance_appsScriptUrl', url);
+            updateSyncIndicator('Connected', 'bg-green-600');
+            toggleSettingsModal();
+            fetchTransactions();
+        } else {
+            alert('Please enter a valid URL.');
+        }
+    }
+
+    // Sync Indicator UI
+    function updateSyncIndicator(status, dotColorClass) {
+        const dot = document.getElementById('syncStatusDot');
+        const text = document.getElementById('syncStatusText');
+        
+        dot.className = `w-2 h-2 rounded-full ${dotColorClass}`;
+        text.textContent = status;
+    }
+
+    // Initialize UI on load
+    window.onload = () => {
+        const savedUrl = localStorage.getItem('famFinance_appsScriptUrl');
+        if (savedUrl) {
+            updateSyncIndicator('Connected', 'bg-green-600');
+            fetchTransactions();
+        } else {
+            updateSyncIndicator('URL Required', 'bg-outline');
+        }
+    };
+
+    // Fetch Transactions
+    async function fetchTransactions() {
+        const url = localStorage.getItem('famFinance_appsScriptUrl');
+        if (!url || isFetching) return;
+
+        isFetching = true;
+        const refreshIcon = document.getElementById('refreshIcon');
+        refreshIcon.classList.add('animate-spin');
+        
+        const tableBody = document.getElementById('tableBody');
+        tableBody.innerHTML = `<tr><td colspan="7" class="px-md py-xl text-center text-on-surface-variant italic">Fetching transactions...</td></tr>`;
+
+        try {
+            const response = await fetch(`${url}?action=getTransactions`);
+            if (!response.ok) throw new Error('Network response was not ok');
+            
+            const data = await response.json();
+            transactions = Array.isArray(data) ? data : [];
+            renderTransactions(transactions);
+            updateSyncIndicator('Connected', 'bg-green-600');
+        } catch (error) {
+            console.error('Fetch error:', error);
+            updateSyncIndicator('Error', 'bg-error');
+            tableBody.innerHTML = `<tr><td colspan="7" class="px-md py-xl text-center text-error italic">Failed to fetch data. Verify URL and CORS settings.</td></tr>`;
+        } finally {
+            isFetching = false;
+            refreshIcon.classList.remove('animate-spin');
+        }
+    }
+
+    function renderTransactions(data) {
+        const tableBody = document.getElementById('tableBody');
+        const countDisplay = document.getElementById('entryCount');
+        
+        if (!data || data.length === 0) {
+            tableBody.innerHTML = `<tr><td colspan="7" class="px-md py-xl text-center text-on-surface-variant italic">No transactions found.</td></tr>`;
+            countDisplay.innerHTML = `Showing <strong>0</strong> entries`;
+            return;
+        }
+
+        tableBody.innerHTML = data.map(item => `
+            <tr class="hover:bg-surface-container-low transition-colors group">
+                <td class="px-md py-md font-data-mono text-data-mono text-on-surface">${item.date || 'N/A'}</td>
+                <td class="px-md py-md">
+                    <div class="flex items-center gap-sm">
+                        <div class="w-8 h-8 rounded-lg bg-surface-container-high flex items-center justify-center">
+                            <span class="material-symbols-outlined text-secondary text-[18px]">payments</span>
+                        </div>
+                        <span class="font-body-md font-semibold text-primary">${item.merchant || 'Unknown'}</span>
+                    </div>
+                </td>
+                <td class="px-md py-md">
+                    <span class="bg-surface-variant text-on-surface-variant px-sm py-1 rounded-full text-[11px] font-bold uppercase tracking-wider">${item.category || 'General'}</span>
+                </td>
+                <td class="px-md py-md font-data-mono text-data-mono text-on-tertiary-container">${item.id || 'N/A'}</td>
+                <td class="px-md py-md">
+                    <span class="inline-flex items-center px-sm py-1 rounded-lg text-[12px] font-bold ${item.status === 'Settled' ? 'bg-green-100/50 text-green-700' : 'bg-yellow-100/50 text-yellow-700'}">
+                        <span class="w-1.5 h-1.5 rounded-full ${item.status === 'Settled' ? 'bg-green-600' : 'bg-yellow-600'} mr-2"></span>${item.status || 'Pending'}
+                    </span>
+                </td>
+                <td class="px-md py-md text-right font-data-mono font-bold ${parseFloat(item.amount) > 0 ? 'text-green-600' : 'text-primary'}">${parseFloat(item.amount) > 0 ? '+' : ''}${parseFloat(item.amount).toLocaleString('en-US', { style: 'currency', currency: 'USD' })}</td>
+                <td class="px-md py-md text-center">
+                    <button class="opacity-0 group-hover:opacity-100 transition-opacity text-on-surface-variant hover:text-primary">
+                        <span class="material-symbols-outlined text-[20px]">more_vert</span>
+                    </button>
+                </td>
+            </tr>
+        `).join('');
+
+        countDisplay.innerHTML = `Showing <strong>${data.length}</strong> entries`;
+    }
+
+    // CSV Import Logic
+    const importBtn = document.getElementById('importBtn');
+    const dropzone = document.getElementById('dropzone');
+    const fileInput = document.getElementById('fileInput');
+
+    function toggleDropzone() {
+        dropzone.classList.toggle('hidden');
+        dropzone.classList.toggle('flex');
+    }
+
+    importBtn.addEventListener('click', toggleDropzone);
+
+    fileInput.addEventListener('change', (e) => {
+        const file = e.target.files[0];
+        if (file) handleFile(file);
+    });
+
+    async function handleFile(file) {
+        const reader = new FileReader();
+        reader.onload = async (e) => {
+            const text = e.target.result;
+            const rows = text.split('\n').slice(1); // Skip header
+            const parsedData = rows.filter(r => r.trim()).map(row => {
+                const [date, merchant, category, amount, status] = row.split(',').map(s => s.trim());
+                return {
+                    id: `TXN-${Math.random().toString(36).substr(2, 6).toUpperCase()}`,
+                    date, merchant, category, amount, status: status || 'Settled'
+                };
+            });
+
+            if (confirm(`Detected ${parsedData.length} transactions. Sync to cloud?`)) {
+                await syncTransactions(parsedData);
+            }
+        };
+        reader.readAsText(file);
+    }
+
+    async function syncTransactions(dataList) {
+        const url = localStorage.getItem('famFinance_appsScriptUrl');
+        if (!url) {
+            alert('Configure Backend URL in settings first!');
+            toggleSettingsModal();
+            return;
+        }
+
+        try {
+            const response = await fetch(url, {
+                method: 'POST',
+                body: JSON.stringify({ action: 'addTransactions', data: dataList }),
+                headers: { 'Content-Type': 'application/json' }
+            });
+            const result = await response.json();
+            if (result.status === 'success') {
+                alert('Success: Transactions synced to Google Sheets.');
+                toggleDropzone();
+                fetchTransactions();
+            }
+        } catch (error) {
+            alert('Sync failed. Please check your Apps Script configuration.');
+        }
+    }
+
+    // CSV Export Logic
+    document.getElementById('exportBtn').addEventListener('click', () => {
+        if (transactions.length === 0) {
+            alert('No data to export.');
+            return;
+        }
+
+        const headers = ['Date', 'Merchant', 'Category', 'Unique ID', 'Status', 'Amount'];
+        const csvRows = [
+            headers.join(','),
+            ...transactions.map(row => [
+                row.date,
+                `"${row.merchant}"`,
+                row.category,
+                row.id,
+                row.status,
+                row.amount
+            ].join(','))
+        ];
+
+        const blob = new Blob([csvRows.join('\n')], { type: 'text/csv' });
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `FamFinance_Export_${new Date().toISOString().split('T')[0]}.csv`;
+        document.body.appendChild(a);
+        a.click();
+        window.URL.revokeObjectURL(url);
+        document.body.removeChild(a);
+    });
+
+    // Drag & Drop
+    ['dragenter', 'dragover'].forEach(name => {
+        dropzone.addEventListener(name, e => { e.preventDefault(); dropzone.classList.add</script></body></html>
