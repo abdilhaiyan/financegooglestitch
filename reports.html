@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Report Center | FamFinance</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-bright": "#f7f9fb",
+                    "on-tertiary-container": "#75859d",
+                    "on-secondary-container": "#fefcff",
+                    "primary-fixed-dim": "#bec6e0",
+                    "on-error": "#ffffff",
+                    "surface-variant": "#e0e3e5",
+                    "primary-container": "#131b2e",
+                    "inverse-primary": "#bec6e0",
+                    "surface": "#f7f9fb",
+                    "secondary-fixed": "#d8e2ff",
+                    "secondary-container": "#2170e4",
+                    "on-background": "#191c1e",
+                    "on-error-container": "#93000a",
+                    "on-primary": "#ffffff",
+                    "on-tertiary": "#ffffff",
+                    "tertiary": "#000000",
+                    "tertiary-fixed-dim": "#b7c8e1",
+                    "tertiary-fixed": "#d3e4fe",
+                    "outline": "#76777d",
+                    "on-surface": "#191c1e",
+                    "on-primary-fixed": "#131b2e",
+                    "error-container": "#ffdad6",
+                    "secondary": "#0058be",
+                    "on-primary-container": "#7c839b",
+                    "on-secondary": "#ffffff",
+                    "error": "#ba1a1a",
+                    "on-primary-fixed-variant": "#3f465c",
+                    "on-tertiary-fixed-variant": "#38485d",
+                    "inverse-surface": "#2d3133",
+                    "on-secondary-fixed-variant": "#004395",
+                    "surface-tint": "#565e74",
+                    "surface-dim": "#d8dadc",
+                    "surface-container-low": "#f2f4f6",
+                    "outline-variant": "#c6c6cd",
+                    "on-tertiary-fixed": "#0b1c30",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-container-high": "#e6e8ea",
+                    "on-surface-variant": "#45464d",
+                    "inverse-on-surface": "#eff1f3",
+                    "secondary-fixed-dim": "#adc6ff",
+                    "primary-fixed": "#dae2fd",
+                    "primary": "#000000",
+                    "surface-container": "#eceef0",
+                    "surface-container-highest": "#e0e3e5",
+                    "on-secondary-fixed": "#001a42",
+                    "tertiary-container": "#0b1c30",
+                    "background": "#f7f9fb"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "lg": "24px",
+                    "gutter": "24px",
+                    "container-max": "1280px",
+                    "xl": "32px",
+                    "sm": "8px",
+                    "md": "16px",
+                    "base": "4px",
+                    "xs": "4px",
+                    "margin-mobile": "16px"
+            },
+            "fontFamily": {
+                    "body-sm": ["Inter"],
+                    "body-md": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "data-mono": ["JetBrains Mono"],
+                    "label-caps": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "headline-lg-mobile": ["Inter"]
+            },
+            "fontSize": {
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "data-mono": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+                    "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(8px);
+        }
+        .page-canvas {
+            min-height: calc(100vh - 64px);
+        }
+        .pdf-page {
+            aspect-ratio: 1 / 1.414;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md">
+<!-- SideNavBar -->
+<aside class="w-[280px] h-screen fixed left-0 top-0 bg-surface-container-low border-r border-outline-variant flex flex-col gap-sm p-md z-[60]">
+<div class="mb-xl px-sm">
+<h1 class="font-headline-md text-headline-md font-bold text-primary">Family Finance</h1>
+<p class="font-label-caps text-label-caps text-on-tertiary-container uppercase tracking-widest mt-1">Global Overview</p>
+</div>
+<nav class="flex flex-col gap-1">
+<a class="flex items-center gap-md px-md py-sm transition-all duration-200 text-on-surface-variant hover:bg-surface-variant rounded-lg" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-caps text-label-caps">Dashboard</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm transition-all duration-200 text-on-surface-variant hover:bg-surface-variant rounded-lg" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="font-label-caps text-label-caps">Family Hub</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm transition-all duration-200 text-on-surface-variant hover:bg-surface-variant rounded-lg" href="#">
+<span class="material-symbols-outlined">account_balance_wallet</span>
+<span class="font-label-caps text-label-caps">Payments</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm transition-all duration-200 text-on-surface-variant hover:bg-surface-variant rounded-lg" href="#">
+<span class="material-symbols-outlined">receipt_long</span>
+<span class="font-label-caps text-label-caps">Transactions</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm transition-all duration-200 bg-secondary-container text-on-secondary-container rounded-lg" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span class="font-label-caps text-label-caps">Analytics</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm transition-all duration-200 text-on-surface-variant hover:bg-surface-variant rounded-lg" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-caps text-label-caps">Settings</span>
+</a>
+</nav>
+<div class="mt-auto p-md bg-surface-container-high rounded-xl">
+<div class="flex items-center gap-sm mb-md">
+<div class="w-8 h-8 rounded-full bg-secondary-fixed flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined" style="font-size: 20px;">family_restroom</span>
+</div>
+<div>
+<p class="font-label-caps text-label-caps text-on-surface">The Miller Family</p>
+<p class="text-[10px] text-on-tertiary-container uppercase">Premium Plan</p>
+</div>
+</div>
+<button class="w-full py-sm bg-primary text-on-primary font-label-caps text-label-caps rounded-lg hover:opacity-90 transition-opacity">
+                Export Report
+            </button>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="ml-[280px] min-h-screen flex flex-col">
+<!-- TopNavBar -->
+<header class="w-full h-16 sticky top-0 z-50 bg-surface-container-lowest border-b border-outline-variant flex justify-between items-center px-lg">
+<div class="flex items-center gap-md">
+<span class="font-headline-md text-headline-md font-bold text-primary">Report Center</span>
+<div class="h-4 w-[1px] bg-outline-variant mx-sm"></div>
+<div class="flex items-center gap-base px-sm py-1 bg-green-50 text-green-700 border border-green-200 rounded-full">
+<span class="material-symbols-outlined" style="font-size: 14px; font-variation-settings: 'FILL' 1;">sync</span>
+<span class="font-label-caps text-[10px] uppercase tracking-wider">Sheets Connected</span>
+</div>
+</div>
+<div class="flex items-center gap-lg">
+<div class="relative hidden lg:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="pl-10 pr-4 py-2 bg-surface-container border-none rounded-full text-body-sm focus:ring-2 focus:ring-secondary w-64" placeholder="Search reports..." type="text"/>
+</div>
+<div class="flex items-center gap-md">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-secondary transition-colors">notifications</button>
+<button class="material-symbols-outlined text-on-surface-variant hover:text-secondary transition-colors">dark_mode</button>
+<div class="w-8 h-8 rounded-full bg-surface-container-highest overflow-hidden border border-outline-variant">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a middle-aged woman with a friendly smile, clean corporate background, soft studio lighting, high resolution, minimalist aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCEl0DIOb7txi78pMVvoHdvyDBkTILIOVzYP7Y94xbbtnZPo-X0CQ5rW4IQ1-mU_ChWbiAvevaI0bBB2FTPbeaYRaYzNfzZZEP0S_BmYFsiiZnCS2auckmc-6a_Yo1vbMSXVwzTa8LQ7FFE0QQtGRBkPDTY9-lh3tW2wY_WqPwvf5l7eh7oA4Hdj_P0kkrERk8HsYvSZeGkAoS4H5mevBScFX7XLIr4cnHCNEll6UFOQmvNJxUdrP76hdAGfzFCxJJHqhcZHda2lNSa"/>
+</div>
+</div>
+</div>
+</header>
+<div class="p-lg flex-1">
+<div class="grid grid-cols-12 gap-lg h-full">
+<!-- Left Column: Configuration -->
+<div class="col-span-12 lg:col-span-4 flex flex-col gap-lg">
+<!-- Report Configuration Card -->
+<section class="bg-surface-container-lowest border border-outline-variant rounded-xl p-lg flex flex-col gap-md">
+<h2 class="font-label-caps text-label-caps text-on-surface-variant uppercase mb-2">Report Configuration</h2>
+<div class="space-y-4">
+<div class="flex flex-col gap-2">
+<label class="font-label-caps text-[11px] text-on-tertiary-container uppercase">Report Type</label>
+<select class="w-full border-outline-variant rounded-lg font-body-sm focus:border-secondary focus:ring-secondary">
+<option>Monthly Summary</option>
+<option>Tax Ready Statement</option>
+<option>Goal Progress Report</option>
+</select>
+</div>
+<div class="flex flex-col gap-2">
+<label class="font-label-caps text-[11px] text-on-tertiary-container uppercase">Date Range</label>
+<div class="grid grid-cols-3 gap-2">
+<button class="py-2 border border-outline-variant rounded-lg font-label-caps text-[10px] hover:border-secondary transition-colors uppercase">Month</button>
+<button class="py-2 border border-secondary bg-secondary-container text-on-secondary-container rounded-lg font-label-caps text-[10px] uppercase">Quarter</button>
+<button class="py-2 border border-outline-variant rounded-lg font-label-caps text-[10px] hover:border-secondary transition-colors uppercase">Year</button>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<label class="font-label-caps text-[11px] text-on-tertiary-container uppercase">Family Members</label>
+<div class="space-y-2">
+<label class="flex items-center gap-3 p-2 hover:bg-surface-container-low rounded-lg transition-colors cursor-pointer">
+<input checked="" class="rounded-sm text-secondary focus:ring-secondary border-outline-variant" type="checkbox"/>
+<span class="font-body-sm text-on-surface">Whole Family</span>
+</label>
+<label class="flex items-center gap-3 p-2 hover:bg-surface-container-low rounded-lg transition-colors cursor-pointer">
+<input class="rounded-sm text-secondary focus:ring-secondary border-outline-variant" type="checkbox"/>
+<span class="font-body-sm text-on-surface">Sarah (Primary)</span>
+</label>
+<label class="flex items-center gap-3 p-2 hover:bg-surface-container-low rounded-lg transition-colors cursor-pointer">
+<input class="rounded-sm text-secondary focus:ring-secondary border-outline-variant" type="checkbox"/>
+<span class="font-body-sm text-on-surface">James (Partner)</span>
+</label>
+</div>
+</div>
+</div>
+</section>
+<!-- Automation Settings -->
+<section class="bg-surface-container-lowest border border-outline-variant rounded-xl p-lg flex flex-col gap-md">
+<h2 class="font-label-caps text-label-caps text-on-surface-variant uppercase mb-2">Automation Settings</h2>
+<div class="space-y-4">
+<div class="flex items-center justify-between">
+<div>
+<p class="font-body-md font-medium text-on-surface">Monthly Auto-Email</p>
+<p class="text-[12px] text-on-tertiary-container">Send to all members on the 1st</p>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-container-highest rounded-full peer peer-checked:after:translate-x-full peer-checked:bg-secondary after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all"></div>
+</label>
+</div>
+<div class="flex items-center justify-between">
+<div>
+<p class="font-body-md font-medium text-on-surface">Quarterly Archive</p>
+<p class="text-[12px] text-on-tertiary-container">Sync PDF to secure cloud vault</p>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-container-highest rounded-full peer peer-checked:after:translate-x-full peer-checked:bg-secondary after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all"></div>
+</label>
+</div>
+</div>
+</section><section class="bg-surface-container-lowest border border-outline-variant rounded-xl p-lg flex flex-col gap-md">
+<h2 class="font-label-caps text-label-caps text-on-surface-variant uppercase mb-2">Storage &amp; Cloud</h2>
+<div class="space-y-4">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-secondary-fixed flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined" style="font-size: 20px;">cloud_done</span>
+</div>
+<div>
+<p class="font-body-md font-medium text-on-surface">Google Drive</p>
+<p class="text-[12px] text-green-600 flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-green-600"></span>
+            Connected
+          </p>
+</div>
+</div>
+<button class="text-secondary font-label-caps text-[11px] uppercase hover:underline">Configure</button>
+</div>
+<div class="pt-2 border-t border-outline-variant">
+<label class="font-label-caps text-[11px] text-on-tertiary-container uppercase mb-2 block">Default Archive Path</label>
+<div class="flex items-center gap-2 p-2 bg-surface-container rounded-lg">
+<span class="material-symbols-outlined text-on-surface-variant" style="font-size: 18px;">folder</span>
+<span class="text-body-sm text-on-surface-variant">/FamFinance/Reports/</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Action Sidebar -->
+<div class="mt-auto grid grid-cols-1 gap-3">
+<div class="flex flex-col gap-2">
+<button class="w-full py-md bg-primary text-on-primary rounded-lg font-label-caps text-label-caps flex items-center justify-center gap-2 hover:opacity-90 transition-opacity">
+<span class="material-symbols-outlined">add_to_drive</span>
+    Generate &amp; Archive to Drive
+  </button>
+<div class="flex items-center gap-2 px-3 py-2 bg-surface-container-high rounded-lg border border-outline-variant">
+<span class="material-symbols-outlined text-secondary" style="font-size: 16px;">folder_open</span>
+<span class="text-[10px] font-data-mono text-on-surface-variant">/FamFinance/Reports/2024</span>
+</div>
+</div>
+<button class="w-full py-md border border-outline-variant bg-surface-container-lowest text-on-surface rounded-lg font-label-caps text-label-caps flex items-center justify-center gap-2 hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined">calendar_today</span>
+                            Schedule Report
+                        </button>
+<button class="w-full py-md border border-outline-variant bg-surface-container-lowest text-on-surface rounded-lg font-label-caps text-label-caps flex items-center justify-center gap-2 hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined">download</span>
+                            Download CSV
+                        </button>
+</div>
+</div>
+<!-- Right Column: PDF Preview -->
+<div class="col-span-12 lg:col-span-8">
+<div class="bg-surface-container border border-outline-variant rounded-xl p-xl flex flex-col items-center overflow-auto max-h-[800px] relative">
+<!-- Floating Preview Tools -->
+<div class="absolute top-md right-md flex gap-sm z-10">
+<div class="bg-white/80 backdrop-blur-md border border-outline-variant rounded-full flex p-1 shadow-sm">
+<button class="p-2 hover:bg-surface-container-low rounded-full transition-colors material-symbols-outlined">zoom_in</button>
+<button class="p-2 hover:bg-surface-container-low rounded-full transition-colors material-symbols-outlined">zoom_out</button>
+<div class="w-[1px] bg-outline-variant mx-1"></div>
+<button class="p-2 hover:bg-surface-container-low rounded-full transition-colors material-symbols-outlined">print</button>
+</div>
+</div>
+<!-- PDF Content Simulation -->
+<div class="pdf-page w-full max-w-[600px] bg-white p-[60px] flex flex-col font-body-sm shadow-xl">
+<!-- Document Header -->
+<div class="flex justify-between items-start mb-xl">
+<div>
+<h3 class="font-headline-md text-headline-md font-bold text-primary">FamFinance</h3>
+<p class="text-on-tertiary-container font-label-caps text-[10px] mt-1 tracking-widest uppercase">Wealth Report v2.4</p>
+</div>
+<div class="text-right">
+<p class="font-bold text-on-surface">Monthly Summary</p>
+<p class="text-on-tertiary-container text-[12px]">Oct 1 - Oct 31, 2024</p>
+<p class="text-on-tertiary-container text-[10px] font-data-mono mt-1">REF: FF-88219-Q4</p>
+</div>
+</div>
+<!-- Executive Summary Stats -->
+<div class="grid grid-cols-3 gap-lg mb-xl border-y border-outline-variant py-md">
+<div>
+<p class="font-label-caps text-[10px] text-on-tertiary-container uppercase">Total Income</p>
+<p class="text-body-lg font-bold text-on-surface">$12,450.00</p>
+</div>
+<div>
+<p class="font-label-caps text-[10px] text-on-tertiary-container uppercase">Expenses</p>
+<p class="text-body-lg font-bold text-red-600">-$8,120.40</p>
+</div>
+<div>
+<p class="font-label-caps text-[10px] text-on-tertiary-container uppercase">Net Savings</p>
+<p class="text-body-lg font-bold text-green-600">+$4,329.60</p>
+</div>
+</div>
+<!-- Chart Placeholder -->
+<div class="mb-xl">
+<p class="font-label-caps text-[11px] text-on-tertiary-container uppercase mb-md">Spending by Category</p>
+<div class="h-48 w-full bg-slate-50 border border-slate-100 rounded-lg flex items-end justify-between px-md pb-md overflow-hidden relative">
+<!-- Simple CSS Chart simulation -->
+<div class="w-12 bg-primary rounded-t" style="height: 60%;"></div>
+<div class="w-12 bg-secondary rounded-t" style="height: 40%;"></div>
+<div class="w-12 bg-primary rounded-t" style="height: 85%;"></div>
+<div class="w-12 bg-outline-variant rounded-t" style="height: 25%;"></div>
+<div class="w-12 bg-secondary rounded-t" style="height: 55%;"></div>
+<div class="w-12 bg-primary rounded-t" style="height: 70%;"></div>
+<div class="absolute inset-0 flex items-center justify-center opacity-10 pointer-events-none">
+<span class="material-symbols-outlined text-[120px]">monitoring</span>
+</div>
+</div>
+</div>
+<!-- Detailed Table -->
+<div>
+<p class="font-label-caps text-[11px] text-on-tertiary-container uppercase mb-md">Top Transactions</p>
+<table class="w-full text-[12px]">
+<thead class="border-b border-outline-variant text-on-tertiary-container font-label-caps text-[10px]">
+<tr>
+<th class="text-left py-2 font-medium">DATE</th>
+<th class="text-left py-2 font-medium">DESCRIPTION</th>
+<th class="text-left py-2 font-medium">CATEGORY</th>
+<th class="text-right py-2 font-medium">AMOUNT</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant">
+<tr>
+<td class="py-3 font-data-mono">Oct 24</td>
+<td class="py-3 text-on-surface font-medium">Whole Foods Market</td>
+<td class="py-3 text-on-tertiary-container">Groceries</td>
+<td class="py-3 text-right font-data-mono">-$214.50</td>
+</tr>
+<tr>
+<td class="py-3 font-data-mono">Oct 22</td>
+<td class="py-3 text-on-surface font-medium">Shell Petroleum</td>
+<td class="py-3 text-on-tertiary-container">Transport</td>
+<td class="py-3 text-right font-data-mono">-$65.00</td>
+</tr>
+<tr>
+<td class="py-3 font-data-mono">Oct 20</td>
+<td class="py-3 text-on-surface font-medium">Apple Services</td>
+<td class="py-3 text-on-tertiary-container">Subscr.</td>
+<td class="py-3 text-right font-data-mono">-$14.99</td>
+</tr>
+<tr>
+<td class="py-3 font-data-mono">Oct 18</td>
+<td class="py-3 text-on-surface font-medium">Mortgage Payment</td>
+<td class="py-3 text-on-tertiary-container">Housing</td>
+<td class="py-3 text-right font-data-mono">-$2,850.00</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Footer -->
+<div class="mt-auto pt-lg border-t border-outline-variant flex justify-between items-center opacity-50">
+<p class="text-[10px]">FamFinance Report v2.4. Generated on Nov 1, 2024</p>
+<p class="text-[10px]">Page 1 of 12</p>
+</div>
+</div>
+<div class="mt-xl text-center">
+<p class="text-on-tertiary-container font-body-sm">Previewing 1 of 12 pages</p>
+<div class="flex gap-md mt-sm">
+<button class="p-2 border border-outline-variant rounded-lg bg-surface-container-lowest hover:bg-surface-variant transition-colors disabled:opacity-30" disabled="">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button class="p-2 border border-outline-variant rounded-lg bg-surface-container-lowest hover:bg-surface-variant transition-colors">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer -->
+<footer class="w-full py-lg mt-auto bg-surface-container border-t border-outline-variant">
+<div class="flex flex-col md:flex-row justify-between items-center px-lg max-w-container-max mx-auto">
+<span class="font-label-caps text-label-caps text-primary uppercase">© 2024 FamFinance. Secure &amp; Encrypted.</span>
+<div class="flex items-center mt-md md:mt-0">
+<a class="inline-block mx-md font-body-sm text-body-sm text-on-surface-variant hover:text-secondary transition-colors" href="#">Security Policy</a>
+<a class="inline-block mx-md font-body-sm text-body-sm text-on-surface-variant hover:text-secondary transition-colors" href="#">Terms of Service</a>
+<a class="inline-block mx-md font-body-sm text-body-sm text-on-surface-variant hover:text-secondary transition-colors" href="#">Help Center</a>
+</div>
+</div>
+</footer>
+</main>
+<script>
+        // Simple micro-interactions for the configuration buttons
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('click', function() {
+                if(this.classList.contains('border-outline-variant')) {
+                    // Quick state toggle simulation
+                    console.log('Action triggered:', this.innerText.trim());
+                }
+            });
+        });
+
+        // Search bar focus effect
+        const searchInput = document.querySelector('input[type="text"]');
+        searchInput?.addEventListener('focus', () => {
+            searchInput.parentElement.classList.add('ring-2', 'ring-secondary');
+        });
+        searchInput?.addEventListener('blur', () => {
+            searchInput.parentElement.classList.remove('ring-2', 'ring-secondary');
+        });
+    </script>
+</body></html>
