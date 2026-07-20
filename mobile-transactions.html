@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Transaction Manager - FamFinance</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+        }
+        /* Custom hide scrollbar */
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-tertiary-container": "#75859d",
+                      "on-error-container": "#93000a",
+                      "tertiary": "#000000",
+                      "primary-fixed-dim": "#bec6e0",
+                      "inverse-primary": "#bec6e0",
+                      "tertiary-fixed": "#d3e4fe",
+                      "outline": "#76777d",
+                      "surface-dim": "#d8dadc",
+                      "on-tertiary-fixed-variant": "#38485d",
+                      "inverse-on-surface": "#eff1f3",
+                      "primary": "#000000",
+                      "error": "#ba1a1a",
+                      "on-secondary-fixed-variant": "#004395",
+                      "secondary": "#0058be",
+                      "on-secondary-container": "#fefcff",
+                      "surface-variant": "#e0e3e5",
+                      "surface-container-high": "#e6e8ea",
+                      "surface-container": "#eceef0",
+                      "surface-bright": "#f7f9fb",
+                      "on-primary-container": "#7c839b",
+                      "tertiary-fixed-dim": "#b7c8e1",
+                      "on-secondary-fixed": "#001a42",
+                      "on-surface-variant": "#45464d",
+                      "on-error": "#ffffff",
+                      "inverse-surface": "#2d3133",
+                      "surface-container-lowest": "#ffffff",
+                      "secondary-container": "#2170e4",
+                      "on-primary-fixed-variant": "#3f465c",
+                      "tertiary-container": "#0b1c30",
+                      "surface-container-low": "#f2f4f6",
+                      "on-surface": "#191c1e",
+                      "surface-tint": "#565e74",
+                      "outline-variant": "#c6c6cd",
+                      "on-secondary": "#ffffff",
+                      "on-primary": "#ffffff",
+                      "primary-container": "#131b2e",
+                      "surface": "#f7f9fb",
+                      "error-container": "#ffdad6",
+                      "on-primary-fixed": "#131b2e",
+                      "secondary-fixed": "#d8e2ff",
+                      "primary-fixed": "#dae2fd",
+                      "on-background": "#191c1e",
+                      "surface-container-highest": "#e0e3e5",
+                      "on-tertiary": "#ffffff",
+                      "secondary-fixed-dim": "#adc6ff",
+                      "on-tertiary-fixed": "#0b1c30",
+                      "background": "#f7f9fb"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "base": "4px",
+                      "sm": "8px",
+                      "margin-mobile": "16px",
+                      "container-max": "1280px",
+                      "xl": "32px",
+                      "md": "16px",
+                      "lg": "24px",
+                      "xs": "4px",
+                      "gutter": "24px"
+              },
+              "fontFamily": {
+                      "headline-lg": ["Inter"],
+                      "body-sm": ["Inter"],
+                      "headline-lg-mobile": ["Inter"],
+                      "display-lg": ["Inter"],
+                      "label-caps": ["Inter"],
+                      "data-mono": ["JetBrains Mono"],
+                      "body-md": ["Inter"],
+                      "body-lg": ["Inter"],
+                      "headline-md": ["Inter"]
+              },
+              "fontSize": {
+                      "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                      "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                      "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                      "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                      "data-mono": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                      "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body-md text-body-md min-h-screen flex flex-col">
+<!-- Top Navigation Bar -->
+<header class="bg-surface-container-lowest text-secondary h-16 sticky top-0 z-50 border-b border-outline-variant flex items-center px-lg">
+<div class="flex justify-between items-center w-full max-w-container-max mx-auto">
+<div class="flex flex-col">
+<span class="font-headline-md text-headline-md font-bold text-primary">FamFinance</span>
+<div class="flex items-center gap-xs">
+<div class="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></div>
+<span class="font-label-caps text-[10px] text-on-tertiary-container tracking-wider">SHEETS CONNECTED</span>
+</div>
+</div>
+<div class="flex items-center gap-md">
+<button class="cursor-pointer active:opacity-80 transition-colors hover:text-secondary">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<div class="w-8 h-8 rounded-full bg-surface-container-high overflow-hidden border border-outline-variant">
+<img class="w-full h-full object-cover" data-alt="A professional studio portrait of a modern finance user, shot in high-key soft lighting. The subject has a confident, calm expression, reflecting a premium fintech user experience. The background is a clean, minimalist off-white, matching the slate-and-white professional aesthetic of the FamFinance application. High-end editorial photography style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBdAzPk0snY0C0ncB4n3xmty-y7ngHvhC-xxJS4WEwf6yQf-VwdQkG1oDzr65ihE-jMSP3bs8VuWBBWOW-_Wp7vvRDMYTk621zUtdALE7cbEJ6MqzCt_2YcH3SZy7d_p3E60xa3I1MMV9JjI357dv4T6gg52pnCCdtSn6Jwfs8U20sd979bLJlQgdlVSpysALf4HvQ06-0z6FmeFAejhZIxOEDFkEVmclM-BnwHHmL8Bs94BZrG9PlphSOYNGVpXYtyLtuJ061MiFGO"/>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="flex-grow pb-24">
+<!-- Search & Filter Header -->
+<section class="p-margin-mobile bg-surface-container-lowest">
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-[20px]" data-icon="search">search</span>
+<input class="w-full pl-10 pr-4 py-3 bg-surface-container-low border border-outline-variant rounded-xl focus:ring-2 focus:ring-secondary focus:border-secondary transition-all outline-none text-body-md placeholder:text-on-surface-variant/50" placeholder="Search merchants or categories" type="text"/>
+</div>
+<!-- Filter Chips -->
+<div class="flex gap-sm overflow-x-auto no-scrollbar py-md">
+<button class="flex items-center gap-xs px-md py-sm bg-secondary-container text-on-secondary-container rounded-full font-label-caps whitespace-nowrap">
+                    All Categories
+                    <span class="material-symbols-outlined text-[16px]" data-icon="keyboard_arrow_down">keyboard_arrow_down</span>
+</button>
+<button class="flex items-center gap-xs px-md py-sm border border-outline-variant text-on-surface-variant rounded-full font-label-caps whitespace-nowrap hover:bg-surface-variant transition-colors">
+                    Last 30 Days
+                </button>
+<button class="flex items-center gap-xs px-md py-sm border border-outline-variant text-on-surface-variant rounded-full font-label-caps whitespace-nowrap hover:bg-surface-variant transition-colors">
+<span class="material-symbols-outlined text-[16px]" data-icon="tune">tune</span>
+                    Filters
+                </button>
+</div>
+</section>
+<!-- Transaction List -->
+<section class="px-margin-mobile">
+<div class="mb-md flex justify-between items-end">
+<h2 class="font-label-caps text-on-surface-variant tracking-widest">LIVE SYNC FEED</h2>
+<span class="text-body-sm text-secondary font-medium">Export CSV</span>
+</div>
+<div class="space-y-sm">
+<!-- Transaction Item 1 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-md flex justify-between items-center active:scale-[0.98] transition-transform cursor-pointer">
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 rounded-lg bg-surface-container-low flex items-center justify-center border border-outline-variant">
+<span class="material-symbols-outlined text-secondary" data-icon="shopping_bag">shopping_bag</span>
+</div>
+<div class="flex flex-col">
+<span class="font-body-md font-semibold text-primary">Whole Foods Market</span>
+<span class="text-body-sm text-on-surface-variant">Today • Groceries</span>
+</div>
+</div>
+<div class="flex flex-col items-end">
+<span class="font-data-mono text-primary font-bold">-$142.30</span>
+<div class="flex items-center gap-xs">
+<span class="w-1.5 h-1.5 rounded-full bg-green-500"></span>
+<span class="text-[10px] font-label-caps text-green-700">SETTLED</span>
+</div>
+</div>
+</div>
+<!-- Transaction Item 2 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-md flex justify-between items-center active:scale-[0.98] transition-transform cursor-pointer">
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 rounded-lg bg-surface-container-low flex items-center justify-center border border-outline-variant">
+<span class="material-symbols-outlined text-secondary" data-icon="restaurant">restaurant</span>
+</div>
+<div class="flex flex-col">
+<span class="font-body-md font-semibold text-primary">Blue Bottle Coffee</span>
+<span class="text-body-sm text-on-surface-variant">Yesterday • Dining</span>
+</div>
+</div>
+<div class="flex flex-col items-end">
+<span class="font-data-mono text-primary font-bold">-$12.50</span>
+<div class="flex items-center gap-xs">
+<span class="w-1.5 h-1.5 rounded-full bg-yellow-500"></span>
+<span class="text-[10px] font-label-caps text-yellow-700">PENDING</span>
+</div>
+</div>
+</div>
+<!-- Transaction Item 3 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-md flex justify-between items-center active:scale-[0.98] transition-transform cursor-pointer">
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 rounded-lg bg-surface-container-low flex items-center justify-center border border-outline-variant">
+<span class="material-symbols-outlined text-secondary" data-icon="electric_car">electric_car</span>
+</div>
+<div class="flex flex-col">
+<span class="font-body-md font-semibold text-primary">Tesla Supercharger</span>
+<span class="text-body-sm text-on-surface-variant">24 Oct • Transport</span>
+</div>
+</div>
+<div class="flex flex-col items-end">
+<span class="font-data-mono text-primary font-bold">-$34.12</span>
+<div class="flex items-center gap-xs">
+<span class="w-1.5 h-1.5 rounded-full bg-green-500"></span>
+<span class="text-[10px] font-label-caps text-green-700">SETTLED</span>
+</div>
+</div>
+</div>
+<!-- Transaction Item 4 (Income) -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-md flex justify-between items-center active:scale-[0.98] transition-transform cursor-pointer">
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 rounded-lg bg-surface-container-low flex items-center justify-center border border-outline-variant">
+<span class="material-symbols-outlined text-green-600" data-icon="payments">payments</span>
+</div>
+<div class="flex flex-col">
+<span class="font-body-md font-semibold text-primary">Monthly Salary</span>
+<span class="text-body-sm text-on-surface-variant">23 Oct • Income</span>
+</div>
+</div>
+<div class="flex flex-col items-end">
+<span class="font-data-mono text-green-700 font-bold">+$8,450.00</span>
+<div class="flex items-center gap-xs">
+<span class="w-1.5 h-1.5 rounded-full bg-green-500"></span>
+<span class="text-[10px] font-label-caps text-green-700">SETTLED</span>
+</div>
+</div>
+</div>
+<!-- Transaction Item 5 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-md flex justify-between items-center active:scale-[0.98] transition-transform cursor-pointer">
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 rounded-lg bg-surface-container-low flex items-center justify-center border border-outline-variant">
+<span class="material-symbols-outlined text-secondary" data-icon="shield">shield</span>
+</div>
+<div class="flex flex-col">
+<span class="font-body-md font-semibold text-primary">State Farm Insurance</span>
+<span class="text-body-sm text-on-surface-variant">22 Oct • Fixed Costs</span>
+</div>
+</div>
+<div class="flex flex-col items-end">
+<span class="font-data-mono text-primary font-bold">-$210.00</span>
+<div class="flex items-center gap-xs">
+<span class="w-1.5 h-1.5 rounded-full bg-green-500"></span>
+<span class="text-[10px] font-label-caps text-green-700">SETTLED</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Floating Action Button -->
+<button class="fixed right-margin-mobile bottom-24 w-14 h-14 bg-primary text-white rounded-full shadow-lg flex items-center justify-center hover:scale-110 active:scale-95 transition-all z-40">
+<span class="material-symbols-outlined" data-icon="upload_file">upload_file</span>
+</button>
+<!-- Bottom Navigation Bar -->
+<nav class="bg-surface-container-lowest border-t border-outline-variant h-16 fixed bottom-0 left-0 right-0 z-50 flex items-center px-lg">
+<div class="flex justify-between items-center w-full max-w-container-max mx-auto h-full">
+<div class="flex flex-col items-center gap-xs cursor-pointer text-on-surface-variant hover:text-secondary transition-colors group">
+<span class="material-symbols-outlined text-[24px]" data-icon="dashboard">dashboard</span>
+<span class="font-label-caps text-[10px]">Hub</span>
+</div>
+<!-- Active State -->
+<div class="flex flex-col items-center gap-xs cursor-pointer text-secondary transition-colors group">
+<span class="material-symbols-outlined text-[24px] font-bold" data-icon="receipt_long" data-weight="fill" style="font-variation-settings: 'FILL' 1;">receipt_long</span>
+<span class="font-label-caps text-[10px]">Activity</span>
+</div>
+<div class="flex flex-col items-center gap-xs cursor-pointer text-on-surface-variant hover:text-secondary transition-colors group">
+<span class="material-symbols-outlined text-[24px]" data-icon="track_changes">track_changes</span>
+<span class="font-label-caps text-[10px]">Goals</span>
+</div>
+<div class="flex flex-col items-center gap-xs cursor-pointer text-on-surface-variant hover:text-secondary transition-colors group">
+<span class="material-symbols-outlined text-[24px]" data-icon="lock">lock</span>
+<span class="font-label-caps text-[10px]">Vaults</span>
+</div>
+<div class="flex flex-col items-center gap-xs cursor-pointer text-on-surface-variant hover:text-secondary transition-colors group">
+<span class="material-symbols-outlined text-[24px]" data-icon="settings">settings</span>
+<span class="font-label-caps text-[10px]">Settings</span>
+</div>
+</div>
+</nav>
+<!-- Micro-interaction Script -->
+<script>
+        document.querySelectorAll('.active\\:scale-\\[0\\.98\\]').forEach(card => {
+            card.addEventListener('click', () => {
+                // Mock interaction
+                console.log('Transaction Detail Opened');
+            });
+        });
+
+        // Simple scroll observer for FAB hide/show
+        let lastScroll = 0;
+        const fab = document.querySelector('.fixed.right-margin-mobile');
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            if (currentScroll > lastScroll && currentScroll > 100) {
+                fab.style.transform = 'translateY(120px) scale(0)';
+            } else {
+                fab.style.transform = 'translateY(0) scale(1)';
+            }
+            lastScroll = currentScroll;
+        });
+    </script>
+</body></html>
