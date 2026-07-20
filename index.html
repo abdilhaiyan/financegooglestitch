@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Kinship Ledger - Family Goals</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "outline": "#76777d",
+                    "surface-container-highest": "#e0e3e5",
+                    "secondary-container": "#2170e4",
+                    "tertiary": "#000000",
+                    "on-error": "#ffffff",
+                    "inverse-surface": "#2d3133",
+                    "secondary-fixed-dim": "#adc6ff",
+                    "on-secondary": "#ffffff",
+                    "primary-fixed-dim": "#bec6e0",
+                    "surface-variant": "#e0e3e5",
+                    "on-primary-fixed": "#131b2e",
+                    "on-primary-fixed-variant": "#3f465c",
+                    "on-surface-variant": "#45464d",
+                    "tertiary-fixed-dim": "#b7c8e1",
+                    "on-tertiary-container": "#75859d",
+                    "on-tertiary-fixed-variant": "#38485d",
+                    "surface-container-lowest": "#ffffff",
+                    "error-container": "#ffdad6",
+                    "surface": "#f7f9fb",
+                    "tertiary-fixed": "#d3e4fe",
+                    "inverse-on-surface": "#eff1f3",
+                    "surface-container-low": "#f2f4f6",
+                    "on-secondary-fixed-variant": "#004395",
+                    "primary-fixed": "#dae2fd",
+                    "secondary": "#0058be",
+                    "surface-bright": "#f7f9fb",
+                    "on-background": "#191c1e",
+                    "primary": "#000000",
+                    "on-surface": "#191c1e",
+                    "tertiary-container": "#0b1c30",
+                    "on-primary-container": "#7c839b",
+                    "on-secondary-fixed": "#001a42",
+                    "background": "#f7f9fb",
+                    "surface-container": "#eceef0",
+                    "on-tertiary-fixed": "#0b1c30",
+                    "inverse-primary": "#bec6e0",
+                    "surface-dim": "#d8dadc",
+                    "error": "#ba1a1a",
+                    "secondary-fixed": "#d8e2ff",
+                    "on-secondary-container": "#fefcff",
+                    "on-primary": "#ffffff",
+                    "surface-container-high": "#e6e8ea",
+                    "surface-tint": "#565e74",
+                    "outline-variant": "#c6c6cd",
+                    "on-tertiary": "#ffffff",
+                    "primary-container": "#131b2e",
+                    "on-error-container": "#93000a"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .sync-animation {
+            animation: spin 2s linear infinite;
+        }
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        .status-pulse {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: .5; }
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-['Inter']">
+<div class="relative flex h-auto min-h-screen w-full flex-col bg-gray-50 group/design-root overflow-x-hidden">
+<div class="layout-container flex h-full grow flex-col">
+<div class="px-4 md:px-40 flex flex-1 justify-center py-5">
+<div class="layout-content-container flex flex-col max-w-[960px] flex-1">
+<!-- Shared Header Navigation -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-surface-container-highest px-10 py-3 bg-surface-container-lowest">
+<div class="flex items-center gap-4 text-primary">
+<div class="size-6 text-secondary">
+<svg fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><path d="M6 6H42L36 24L42 42H6L12 24L6 6Z" fill="currentColor"></path></svg>
+</div>
+<h2 class="text-primary text-lg font-bold leading-tight tracking-[-0.015em]">Kinship Ledger</h2>
+</div>
+<div class="flex flex-1 justify-end gap-4 md:gap-8 items-center">
+<!-- Backend Connection Status Indicator -->
+<div class="flex items-center gap-2 px-3 py-1.5 rounded-full bg-surface-container text-xs font-semibold cursor-help group relative" id="backend-status-container" title="Backend Configuration Status">
+<div class="w-2.5 h-2.5 rounded-full bg-error status-pulse" id="status-dot"></div>
+<span class="text-on-surface-variant uppercase tracking-wider" id="status-text">Disconnected</span>
+<!-- Tooltip for Configuration -->
+<div class="absolute top-full right-0 mt-2 w-64 p-4 bg-surface-container-highest rounded-xl shadow-xl border border-outline-variant opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-50">
+<p class="text-xs text-on-surface mb-2 font-bold">Google Apps Script URL</p>
+<input class="w-full text-xs p-2 rounded border border-outline-variant bg-surface" id="script-url-input" placeholder="Paste Web App URL here..." type="password"/>
+<button class="mt-2 w-full py-1.5 bg-primary text-on-primary text-xs rounded font-bold hover:bg-opacity-90 transition-colors" onclick="saveBackendConfig()">Save &amp; Connect</button>
+</div>
+</div>
+<label class="hidden md:flex flex-col min-w-40 !h-10 max-w-64">
+<div class="flex w-full flex-1 items-stretch rounded h-full">
+<div class="text-on-surface-variant flex border-none bg-surface-container items-center justify-center pl-4 rounded-l border-r-0" data-icon="search" data-size="24px">
+<span class="material-symbols-outlined">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded text-primary focus:outline-0 focus:ring-0 border-none bg-surface-container focus:border-none h-full placeholder:text-on-surface-variant px-4 rounded-l-none border-l-0 pl-2 text-base font-normal leading-normal" placeholder="Search Goals" value=""/>
+</div>
+</label>
+<button class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded h-10 bg-surface-container text-primary gap-2 text-sm font-bold leading-normal tracking-[0.015em] min-w-0 px-2.5" id="cloud-sync-indicator">
+<div class="text-primary" data-icon="cloud_done">
+<span class="material-symbols-outlined" id="cloud-icon">cloud_off</span>
+</div>
+</button>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 border-2 border-surface-container-highest" data-alt="Close-up professional portrait of a confident middle-aged woman with warm eyes and a friendly smile, set against a softly blurred modern office interior. She is wearing a professional charcoal blazer. The lighting is soft and flattering, creating an approachable and trustworthy executive appearance consistent with a premium financial ledger application." style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBVv88riIol7Za8UoFb9vCxFDTOlE0iLzLWGjklKiZzj9ivS0q158PZ47ZUUYUe7-UCg-Xm7HaxFbHMeVqRol1ashLOvVOtpS9Cwcq7BI0xAv7ogzypEWf1UIJfuMUpoF9bz-85_LCJ6JjsegcfPdBZR0XAQUKMeCd_uxT8d1AtwWkPuKIGBWGgH1Fiy9Idx7W1gpnjlIhj-03SKMf7aNXZx0og9BBx1YbZm8we1Excy26skirF9Z3rbj-REj8JtdYFQvDdAdo1l70h");'></div>
+</div>
+</header>
+<!-- Page Header Section -->
+<div class="flex flex-wrap justify-between gap-3 p-4">
+<div class="flex min-w-72 flex-col gap-3">
+<p class="text-primary text-4xl font-black leading-tight tracking-[-0.033em]">Family Goals Overview</p>
+<p class="text-on-surface-variant text-base font-normal leading-normal">Real-time synchronization with Google Sheets backend</p>
+</div>
+</div>
+<!-- Live Data Cards -->
+<div class="flex flex-wrap gap-4 p-4">
+<div class="flex min-w-[200px] flex-1 flex-col gap-2 rounded-xl p-6 bg-surface-container-high border border-outline-variant hover:border-secondary transition-colors group">
+<div class="flex justify-between items-start">
+<p class="text-on-surface-variant text-sm font-bold uppercase tracking-widest">Total Family Savings</p>
+<span class="material-symbols-outlined text-secondary opacity-0 group-hover:opacity-100 transition-opacity">account_balance_wallet</span>
+</div>
+<p class="text-primary tracking-tighter text-4xl font-black leading-tight" id="total-savings">$0.00</p>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-xs text-[#07883d]">trending_up</span>
+<p class="text-[#07883d] text-sm font-bold leading-normal" id="savings-trend">+0.0%</p>
+<span class="text-on-surface-variant text-xs font-normal">vs last month</span>
+</div>
+</div>
+<div class="flex min-w-[200px] flex-1 flex-col gap-2 rounded-xl p-6 bg-surface-container-high border border-outline-variant hover:border-secondary transition-colors group">
+<div class="flex justify-between items-start">
+<p class="text-on-surface-variant text-sm font-bold uppercase tracking-widest">Active Shared Goals</p>
+<span class="material-symbols-outlined text-secondary opacity-0 group-hover:opacity-100 transition-opacity">target</span>
+</div>
+<p class="text-primary tracking-tighter text-4xl font-black leading-tight" id="active-goals-count">0</p>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-xs text-[#07883d]">add_circle</span>
+<p class="text-[#07883d] text-sm font-bold leading-normal" id="goals-trend">+0</p>
+<span class="text-on-surface-variant text-xs font-normal">new this quarter</span>
+</div>
+</div>
+</div>
+<!-- Sync Progress Section -->
+<div class="flex flex-col gap-3 p-4">
+<div class="flex gap-6 justify-between items-center">
+<p class="text-primary text-base font-bold leading-normal">Sheet Synchronization Status</p>
+<span class="text-sm font-mono text-secondary" id="sync-percentage-text">0%</span>
+</div>
+<div class="h-3 rounded-full bg-surface-container overflow-hidden">
+<div class="h-full rounded-full bg-secondary transition-all duration-500" id="sync-progress-bar" style="width: 0%;"></div>
+</div>
+<div class="flex justify-between">
+<p class="text-on-surface-variant text-xs font-medium leading-normal italic" id="last-updated-text">No sync performed yet</p>
+<p class="text-on-surface-variant text-xs font-medium uppercase tracking-tighter">API: Google v4</p>
+</div>
+</div>
+<!-- Action Controls -->
+<div class="flex px-4 py-3 justify-start gap-3">
+<button class="flex min-w-[140px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-12 px-6 bg-primary text-on-primary gap-3 text-sm font-bold leading-normal tracking-[0.015em] hover:bg-opacity-90 transition-all shadow-md active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed" id="sync-now-btn">
+<span class="material-symbols-outlined" id="sync-icon">sync</span>
+<span id="sync-btn-text">Sync Now</span>
+</button>
+<button class="flex items-center justify-center w-12 h-12 rounded-xl bg-surface-container-high text-primary border border-outline-variant hover:bg-surface-container-highest transition-colors" onclick="toggleConfig()">
+<span class="material-symbols-outlined">settings</span>
+</button>
+</div>
+<!-- Table Preview (Mockup for Context) -->
+<div class="p-4 mt-4">
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant overflow-hidden">
+<div class="px-6 py-4 border-b border-outline-variant flex justify-between items-center">
+<h3 class="font-bold text-primary">Goal List Breakdown</h3>
+<span class="text-xs font-mono text-on-surface-variant bg-surface-container px-2 py-1 rounded">Tab: FamilyGoals</span>
+</div>
+<div class="p-0 overflow-x-auto">
+<table class="w-full text-left text-sm">
+<thead class="bg-surface-container-low text-on-surface-variant">
+<tr>
+<th class="px-6 py-3 font-bold uppercase tracking-tighter text-xs">Goal Name</th>
+<th class="px-6 py-3 font-bold uppercase tracking-tighter text-xs text-right">Target</th>
+<th class="px-6 py-3 font-bold uppercase tracking-tighter text-xs text-right">Saved</th>
+<th class="px-6 py-3 font-bold uppercase tracking-tighter text-xs text-center">Status</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant" id="goals-table-body">
+<!-- Dynamic rows will go here -->
+<tr class="animate-pulse">
+<td class="px-6 py-4 bg-surface-container-highest/20 h-4 w-32 m-2 rounded"></td>
+<td class="px-6 py-4 bg-surface-container-highest/20 h-4 w-20 m-2 rounded"></td>
+<td class="px-6 py-4 bg-surface-container-highest/20 h-4 w-20 m-2 rounded"></td>
+<td class="px-6 py-4 bg-surface-container-highest/20 h-4 w-16 m-2 rounded"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script>
+    // Configuration Persistence Logic
+    let SCRIPT_URL = localStorage.getItem('kinship_ledger_script_url') || "";
+
+    const statusDot = document.getElementById('status-dot');
+    const statusText = document.getElementById('status-text');
+    const cloudIcon = document.getElementById('cloud-icon');
+    const syncBtn = document.getElementById('sync-now-btn');
+    const syncBtnText = document.getElementById('sync-btn-text');
+    const syncIcon = document.getElementById('sync-icon');
+    const progressBar = document.getElementById('sync-progress-bar');
+    const progressText = document.getElementById('sync-percentage-text');
+    const lastUpdatedText = document.getElementById('last-updated-text');
+
+    const totalSavingsEl = document.getElementById('total-savings');
+    const savingsTrendEl = document.getElementById('savings-trend');
+    const activeGoalsEl = document.getElementById('active-goals-count');
+    const goalsTrendEl = document.getElementById('goals-trend');
+    const tableBody = document.getElementById('goals-table-body');
+
+    function updateConnectionUI() {
+        if (SCRIPT_URL && SCRIPT_URL.startsWith('http')) {
+            statusDot.classList.remove('bg-error', 'status-pulse');
+            statusDot.classList.add('bg-[#07883d]');
+            statusText.innerText = "Connected";
+            cloudIcon.innerText = "cloud_done";
+            cloudIcon.classList.add('text-[#07883d]');
+            syncBtn.disabled = false;
+        } else {
+            statusDot.classList.add('bg-error', 'status-pulse');
+            statusDot.classList.remove('bg-[#07883d]');
+            statusText.innerText = "Disconnected";
+            cloudIcon.innerText = "cloud_off";
+            cloudIcon.classList.remove('text-[#07883d]');
+            syncBtn.disabled = true;
+        }
+    }
+
+    function saveBackendConfig() {
+        const input = document.getElementById('script-url-input');
+        if (input.value.trim()) {
+            SCRIPT_URL = input.value.trim();
+            localStorage.setItem('kinship_ledger_script_url', SCRIPT_URL);
+            updateConnectionUI();
+            alert("Backend URL saved successfully!");
+        }
+    }
+
+    function toggleConfig() {
+        const tooltip = document.querySelector('.group-hover\\:opacity-100');
+        // This is handled by CSS hover, but we could add manual toggle for mobile here
+    }
+
+    // Backend Fetching Logic
+    async function fetchFamilyData() {
+        if (!SCRIPT_URL) return;
+
+        // Visual feedback starting
+        syncBtn.disabled = true;
+        syncIcon.classList.add('sync-animation');
+        syncBtnText.innerText = "Synchronizing...";
+        progressBar.style.width = '30%';
+        progressText.innerText = '30%';
+
+        try {
+            // NOTE: In a real environment, this URL would point to a Google Apps Script Web App 
+            // that returns JSON from a spreadsheet. Since we don't have a live endpoint, 
+            // we simulate the fetch response for demonstration purposes.
+            
+            // Simulating network delay
+            await new Promise(resolve => setTimeout(resolve, 1500));
+            
+            progressBar.style.width = '70%';
+            progressText.innerText = '70%';
+
+            /* 
+            Example expected JSON from Apps Script:
+            {
+                "totalSavings": 28450.50,
+                "savingsTrend": 6.8,
+                "activeGoals": 14,
+                "goalsTrend": 3,
+                "goalsList": [
+                    {"name": "College Fund", "target": 50000, "saved": 12500, "status": "In Progress"},
+                    {"name": "Europe Trip", "target": 8000, "saved": 7200, "status": "Almost There"},
+                    {"name": "Home Reno", "target": 25000, "saved": 8750, "status": "In Progress"}
+                ]
+            }
+            */
+
+            const mockData = {
+                "totalSavings": 28450.50,
+                "savingsTrend": 6.8,
+                "activeGoals": 14,
+                "goalsTrend": 3,
+                "goalsList": [
+                    {"name": "College Fund", "target": 50000, "saved": 12500, "status": "On Track"},
+                    {"name": "Europe Summer '25", "target": 8000, "saved": 7200, "status": "Almost Done"},
+                    {"name": "Tesla Model Y", "target": 45000, "saved": 15000, "status": "In Progress"},
+                    {"name": "Kitchen Upgrade", "target": 12000, "saved": 2000, "status": "New"}
+                ]
+            };
+
+            updateDashboard(mockData);
+
+            progressBar.style.width = '100%';
+            progressText.innerText = '100%';
+            lastUpdatedText.innerText = `Last updated: Just now (${new Date().toLocaleTimeString()})`;
+
+        } catch (error) {
+            console.error("Sync failed:", error);
+            alert("Error connecting to backend. Please check your Script URL.");
+            progressBar.style.width = '0%';
+            progressText.innerText = 'Error';
+        } finally {
+            syncBtn.disabled = false;
+            syncIcon.classList.remove('sync-animation');
+            syncBtnText.innerText = "Sync Now";
+        }
+    }
+
+    function updateDashboard(data) {
+        // Update stats
+        totalSavingsEl.innerText = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(data.totalSavings);
+        savingsTrendEl.innerText = `+${data.savingsTrend}%`;
+        activeGoalsEl.innerText = data.activeGoals;
+        goalsTrendEl.innerText = `+${data.goalsTrend}`;
+
+        // Update table
+        tableBody.innerHTML = '';
+        data.goalsList.forEach(goal => {
+            const row = document.createElement('tr');
+            row.classList.add('hover:bg-surface-container-low', 'transition-colors');
+            row.innerHTML = `
+                <td class="px-6 py-4 font-semibold text-primary">${goal.name}</td>
+                <td class="px-6 py-4 text-right font-mono text-on-surface-variant">$${goal.target.toLocaleString()}</td>
+                <td class="px-6 py-4 text-right font-mono text-secondary">$${goal.saved.toLocaleString()}</td>
+                <td class="px-6 py-4 text-center">
+                    <span class="px-2 py-1 rounded-full text-[10px] font-black uppercase tracking-tighter ${
+                        goal.status === 'Almost Done' ? 'bg-[#07883d]/10 text-[#07883d]' : 'bg-secondary/10 text-secondary'
+                    }">${goal.status}</span>
+                </td>
+            `;
+            tableBody.appendChild(row);
+        });
+    }
+
+    // Initialize
+    document.addEventListener('DOMContentLoaded', () => {
+        updateConnectionUI();
+        syncBtn.addEventListener('click', fetchFamilyData);
+        
+        // Populate initial mock if empty
+        if (!SCRIPT_URL) {
+            updateDashboard({
+                "totalSavings": 24580.00,
+                "savingsTrend": 5.2,
+                "activeGoals": 12,
+                "goalsTrend": 2,
+                "goalsList": [
+                    {"name": "Initial Setup Data", "target": 10000, "saved": 1000, "status": "Pending Sync"}
+                ]
+            });
+        } else {
+            // Auto-sync if configured
+            fetchFamilyData();
+        }
+    });
+
+</script>
+</body></html>
