@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Family Members - FinanceHub</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-variant": "#e0e3e5",
+                    "on-tertiary-container": "#75859d",
+                    "on-secondary-container": "#fefcff",
+                    "surface-bright": "#f7f9fb",
+                    "primary-fixed-dim": "#bec6e0",
+                    "on-error": "#ffffff",
+                    "primary-container": "#131b2e",
+                    "surface": "#f7f9fb",
+                    "inverse-primary": "#bec6e0",
+                    "on-primary": "#ffffff",
+                    "on-error-container": "#93000a",
+                    "secondary-fixed": "#d8e2ff",
+                    "secondary-container": "#2170e4",
+                    "on-background": "#191c1e",
+                    "tertiary-fixed": "#d3e4fe",
+                    "outline": "#76777d",
+                    "on-surface": "#191c1e",
+                    "on-primary-fixed": "#131b2e",
+                    "error-container": "#ffdad6",
+                    "secondary": "#0058be",
+                    "on-primary-container": "#7c839b",
+                    "on-tertiary": "#ffffff",
+                    "tertiary-fixed-dim": "#b7c8e1",
+                    "tertiary": "#000000",
+                    "on-secondary-fixed-variant": "#004395",
+                    "inverse-surface": "#2d3133",
+                    "surface-tint": "#565e74",
+                    "on-secondary": "#ffffff",
+                    "error": "#ba1a1a",
+                    "on-tertiary-fixed-variant": "#38485d",
+                    "on-primary-fixed-variant": "#3f465c",
+                    "surface-container-lowest": "#ffffff",
+                    "secondary-fixed-dim": "#adc6ff",
+                    "surface-container-high": "#e6e8ea",
+                    "on-surface-variant": "#45464d",
+                    "inverse-on-surface": "#eff1f3",
+                    "surface-container-low": "#f2f4f6",
+                    "outline-variant": "#c6c6cd",
+                    "surface-dim": "#d8dadc",
+                    "on-tertiary-fixed": "#0b1c30",
+                    "primary-fixed": "#dae2fd",
+                    "primary": "#000000",
+                    "tertiary-container": "#0b1c30",
+                    "background": "#f7f9fb",
+                    "surface-container": "#eceef0",
+                    "surface-container-highest": "#e0e3e5",
+                    "on-secondary-fixed": "#001a42"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "xs": "4px",
+                    "margin-mobile": "16px",
+                    "lg": "24px",
+                    "xl": "32px",
+                    "gutter": "24px",
+                    "container-max": "1280px",
+                    "sm": "8px",
+                    "md": "16px",
+                    "base": "4px"
+            },
+            "fontFamily": {
+                    "display-lg": ["Inter"],
+                    "data-mono": ["JetBrains Mono"],
+                    "headline-lg": ["Inter"],
+                    "body-md": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "label-caps": ["Inter"],
+                    "body-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "data-mono": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface-bright font-body-md text-on-surface hide-scrollbar pb-32">
+<!-- Top App Bar -->
+<header class="bg-surface-bright dark:bg-surface-dim w-full top-0 sticky border-b border-outline-variant dark:border-outline z-40">
+<div class="flex items-center justify-between px-margin-mobile h-16 w-full max-w-container-max mx-auto">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed-dim">signal_cellular_alt</span>
+<h1 class="font-headline-md text-headline-md-mobile dark:text-on-surface font-bold text-primary dark:text-primary-fixed-dim">FinanceHub</h1>
+</div>
+<div class="flex items-center">
+<button class="material-symbols-outlined text-on-surface-variant p-2 rounded-full hover:bg-surface-container-high transition-colors active:scale-95 duration-150">account_circle</button>
+</div>
+</div>
+</header>
+<main class="max-w-md mx-auto px-margin-mobile pt-lg space-y-lg">
+<!-- Section Header -->
+<div class="flex flex-col gap-xs">
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-primary">Family Circle</h2>
+<p class="text-on-surface-variant font-body-sm">Manage roles and visibility for your household accounts.</p>
+</div>
+<!-- Members Grid (Bento Style Layout) -->
+<div class="grid grid-cols-1 gap-md">
+<!-- Member Card: Sarah (Admin) -->
+<div class="glass-card border border-outline-variant rounded-xl p-md flex flex-col gap-md">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 rounded-full overflow-hidden border border-outline-variant">
+<img class="w-full h-full object-cover" data-alt="A professional close-up studio portrait of a woman in her late 30s with a warm, confident expression. She is set against a clean, minimalist off-white background. The lighting is soft and high-key, aligning with a premium light-mode corporate finance UI. The overall aesthetic is clean, sharp, and trustworthy." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAUwiwtyPjSAb7id3Pv6TpFZ-zqqFvOOdkarhiEmvU7fXuuPyAEkdX3YFEElh78ZhZ9sKYC_9m-dNk8Hs65tXNnNvIOiSBuXlszmjVx5RvGvs5egk8vaEv5iHaZej7xsI3k5Bg4cMpS1o0zIGSreTSkbhzr-r5ITSwh-x8TLpcdK8JPAbXzfTFYYCWK_9BgrPabkaA5P3ZHcJDaukdsVk77E0bzkcXyPC1jgrHEzO9cOjwluJ9e8imOKHS821jmu3Bg26j-qSA_OPqA"/>
+</div>
+<div>
+<h3 class="font-body-md font-bold text-primary">Sarah</h3>
+<span class="inline-flex items-center px-2 py-0.5 rounded bg-primary-container text-on-primary-container text-[10px] font-bold uppercase tracking-wider">Admin</span>
+</div>
+</div>
+<div class="text-right">
+<p class="font-label-caps text-label-caps text-on-surface-variant">CONTRIBUTION</p>
+<p class="font-data-mono text-data-mono text-primary">$4,250.00</p>
+</div>
+</div>
+<div class="h-px bg-outline-variant w-full"></div>
+<div class="flex items-center justify-between">
+<label class="font-body-sm text-on-surface flex items-center gap-sm">
+<span class="material-symbols-outlined text-sm">visibility</span>
+                        View all transactions
+                    </label>
+<button class="relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none bg-secondary" onclick="toggleSwitch(this)">
+<span class="translate-x-5 pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out"></span>
+</button>
+</div>
+</div>
+<!-- Member Card: David (Member) -->
+<div class="glass-card border border-outline-variant rounded-xl p-md flex flex-col gap-md">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 rounded-full overflow-hidden border border-outline-variant">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a smiling man in his early 40s wearing a neutral grey sweater. The background is a soft-focus modern architectural interior with clean lines and natural lighting. The image maintains a high-end corporate lifestyle aesthetic with a bright, airy feel and a sophisticated color palette of slates and whites." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAps2B9r46U-RMy-QU-LZ6QZC7NRYXch-pdoXBTSs7LGKreMBV2Q6NhAEkTVaaI2ZNkxqiteTRY5TFc-xvWGDVe3iFAaDOg6O-ciJoQzrvpiA_s2HC6iOtFdkTrxzzDMpr6DABbw6KnILgPcj0fn1fCW1pF7nCCWIqU3OPJHKjfu15pjOz2-TUClHO5HHL8mnbxx3P9qisGYsLMiTec3U4B6cPvX_-53ezB1ai-zQV-qrtdYY08gz9OY3GzadtL6TnpKJGOhMoGNEea"/>
+</div>
+<div>
+<h3 class="font-body-md font-bold text-primary">David</h3>
+<span class="inline-flex items-center px-2 py-0.5 rounded bg-surface-container-high text-on-surface-variant text-[10px] font-bold uppercase tracking-wider">Member</span>
+</div>
+</div>
+<div class="text-right">
+<p class="font-label-caps text-label-caps text-on-surface-variant">CONTRIBUTION</p>
+<p class="font-data-mono text-data-mono text-primary">$3,100.00</p>
+</div>
+</div>
+<div class="h-px bg-outline-variant w-full"></div>
+<div class="flex items-center justify-between">
+<label class="font-body-sm text-on-surface flex items-center gap-sm">
+<span class="material-symbols-outlined text-sm">visibility_off</span>
+                        View all transactions
+                    </label>
+<button class="relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none bg-surface-variant" onclick="toggleSwitch(this)">
+<span class="translate-x-0 pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out"></span>
+</button>
+</div>
+</div>
+<!-- Member Card: Alex (Member) -->
+<div class="glass-card border border-outline-variant rounded-xl p-md flex flex-col gap-md">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 rounded-full overflow-hidden border border-outline-variant">
+<img class="w-full h-full object-cover" data-alt="A high-quality portrait of a young adult with a friendly smile, representing a Gen Z family member. The style is professional yet approachable, with a clean studio lighting setup. The background is a solid light blue-grey that coordinates with the professional slate-and-white theme of the financial application." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC323nR83DBaM2dlqdgxXZzWfbbWeng5ZbiaX6mYuL41BvKuqEAhkdPC1Y_bjJzMh5sC0lCultP6P91s9Umt62vpIVbV5vV6ncCCVxTFWE1-NV3WWFpVG7X86-ALPEwctY2naGZAmmLOYnvTgxVhc9U1PghhwnTBpw_-QK3uB-f1H_O8Txc3u29mHwdwQav8v0eEFCWboxDgoAVGPOjxQ4cALQ5tfNr3ONLRFjEjNRdzsmfxh3mQQfiZhZVsnmwitHgw5zojNgMCAO9"/>
+</div>
+<div>
+<h3 class="font-body-md font-bold text-primary">Alex</h3>
+<span class="inline-flex items-center px-2 py-0.5 rounded bg-surface-container-high text-on-surface-variant text-[10px] font-bold uppercase tracking-wider">Member</span>
+</div>
+</div>
+<div class="text-right">
+<p class="font-label-caps text-label-caps text-on-surface-variant">CONTRIBUTION</p>
+<p class="font-data-mono text-data-mono text-primary">$850.50</p>
+</div>
+</div>
+<div class="h-px bg-outline-variant w-full"></div>
+<div class="flex items-center justify-between">
+<label class="font-body-sm text-on-surface flex items-center gap-sm">
+<span class="material-symbols-outlined text-sm">visibility</span>
+                        View all transactions
+                    </label>
+<button class="relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none bg-secondary" onclick="toggleSwitch(this)">
+<span class="translate-x-5 pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out"></span>
+</button>
+</div>
+</div>
+</div>
+<!-- Call to Action / Stats -->
+<div class="bg-primary-container rounded-xl p-lg text-on-primary-container flex justify-between items-center overflow-hidden relative">
+<div class="relative z-10">
+<p class="text-label-caps font-label-caps opacity-70 mb-xs">TOTAL FAMILY POOL</p>
+<p class="text-headline-md font-headline-md text-white">$8,200.50</p>
+</div>
+<div class="material-symbols-outlined text-6xl opacity-10 absolute -right-4 -bottom-2 transform rotate-12" style="font-variation-settings: 'FILL' 1;">family_restroom</div>
+</div>
+</main>
+<!-- Fixed Bottom Actions -->
+<div class="fixed bottom-20 left-0 w-full px-margin-mobile z-40 pointer-events-none">
+<button class="pointer-events-auto w-full bg-primary text-white font-body-md font-bold py-4 rounded-xl shadow-lg flex items-center justify-center gap-sm active:scale-95 transition-all duration-150">
+<span class="material-symbols-outlined">person_add</span>
+            Invite New Member
+        </button>
+</div>
+<!-- Bottom Nav Bar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-2 pb-4 pt-2 bg-surface-container-lowest dark:bg-surface-container-lowest border-t border-outline-variant shadow-sm">
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-4 py-1 hover:text-secondary transition-all active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-caps text-label-caps">Overview</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-secondary-container dark:bg-secondary text-on-secondary-container dark:text-on-secondary rounded-full px-4 py-1 transition-all active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">group</span>
+<span class="font-label-caps text-label-caps">Members</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-4 py-1 hover:text-secondary transition-all active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined">assessment</span>
+<span class="font-label-caps text-label-caps">Reports</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-4 py-1 hover:text-secondary transition-all active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-caps text-label-caps">Settings</span>
+</a>
+</nav>
+<script>
+        function toggleSwitch(btn) {
+            const circle = btn.querySelector('span');
+            const isActive = btn.classList.contains('bg-secondary');
+            const icon = btn.closest('div').querySelector('.material-symbols-outlined');
+            
+            if (isActive) {
+                btn.classList.remove('bg-secondary');
+                btn.classList.add('bg-surface-variant');
+                circle.classList.remove('translate-x-5');
+                circle.classList.add('translate-x-0');
+                if(icon) icon.innerText = 'visibility_off';
+            } else {
+                btn.classList.add('bg-secondary');
+                btn.classList.remove('bg-surface-variant');
+                circle.classList.add('translate-x-5');
+                circle.classList.remove('translate-x-0');
+                if(icon) icon.innerText = 'visibility';
+            }
+        }
+    </script>
+</body></html>
