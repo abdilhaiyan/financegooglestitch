@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Report Center | FamFinance</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-error-container": "#93000a",
+                        "on-error": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "outline-variant": "#c6c6cd",
+                        "on-surface-variant": "#45464d",
+                        "tertiary-fixed-dim": "#b7c8e1",
+                        "on-secondary-container": "#fefcff",
+                        "inverse-primary": "#bec6e0",
+                        "secondary": "#0058be",
+                        "on-primary-fixed": "#131b2e",
+                        "secondary-container": "#2170e4",
+                        "outline": "#76777d",
+                        "surface-dim": "#d8dadc",
+                        "on-secondary-fixed": "#001a42",
+                        "surface-container-low": "#f2f4f6",
+                        "tertiary-container": "#0b1c30",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary-container": "#7c839b",
+                        "background": "#f7f9fb",
+                        "surface-container": "#eceef0",
+                        "primary-fixed-dim": "#bec6e0",
+                        "primary": "#000000",
+                        "surface-tint": "#565e74",
+                        "on-tertiary": "#ffffff",
+                        "surface-variant": "#e0e3e5",
+                        "secondary-fixed": "#d8e2ff",
+                        "on-tertiary-fixed-variant": "#38485d",
+                        "surface-container-high": "#e6e8ea",
+                        "tertiary-fixed": "#d3e4fe",
+                        "surface": "#f7f9fb",
+                        "on-secondary-fixed-variant": "#004395",
+                        "inverse-surface": "#2d3133",
+                        "on-tertiary-fixed": "#0b1c30",
+                        "primary-fixed": "#dae2fd",
+                        "on-primary": "#ffffff",
+                        "primary-container": "#131b2e",
+                        "surface-bright": "#f7f9fb",
+                        "on-primary-fixed-variant": "#3f465c",
+                        "error": "#ba1a1a",
+                        "error-container": "#ffdad6",
+                        "tertiary": "#000000",
+                        "inverse-on-surface": "#eff1f3",
+                        "on-surface": "#191c1e",
+                        "secondary-fixed-dim": "#adc6ff",
+                        "on-tertiary-container": "#75859d",
+                        "on-background": "#191c1e",
+                        "surface-container-highest": "#e0e3e5"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "sm": "8px",
+                        "container-max": "1280px",
+                        "xs": "4px",
+                        "xl": "32px",
+                        "base": "4px",
+                        "lg": "24px",
+                        "gutter": "24px",
+                        "margin-mobile": "16px",
+                        "md": "16px"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["Inter"],
+                        "label-caps": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "data-mono": ["JetBrains Mono"],
+                        "body-sm": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "data-mono": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+                        "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .toggle-switch:checked + .toggle-bg { background-color: #0058be; }
+        .toggle-switch:checked + .toggle-bg > .toggle-dot { transform: translateX(100%); }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen flex flex-col">
+<!-- Top Navigation Bar -->
+<header class="bg-surface-container-lowest w-full h-16 sticky top-0 z-50 border-b border-outline-variant flex justify-between items-center px-md">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary" data-icon="analytics"></span>
+<h1 class="font-headline-md text-headline-md font-bold text-primary">Report Center</h1>
+</div>
+<div class="flex items-center gap-sm">
+<div class="flex items-center gap-xs px-sm py-xs bg-secondary-container/10 border border-secondary/20 rounded-full">
+<span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+<span class="font-label-caps text-label-caps text-secondary uppercase">Sheets Connected</span>
+</div>
+</div>
+</header>
+<main class="flex-1 pb-xl container-queries">
+<!-- Configuration Section -->
+<section class="p-md space-y-lg">
+<div class="space-y-sm">
+<p class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider">Configuration</p>
+<!-- Report Type Dropdown -->
+<div class="space-y-xs">
+<label class="font-body-sm text-body-sm text-on-surface-variant px-1">Report Type</label>
+<div class="relative">
+<select class="w-full h-12 pl-md pr-xl bg-surface-container-lowest border border-outline-variant rounded-lg appearance-none font-body-md text-body-md focus:ring-2 focus:ring-secondary/50 focus:border-secondary transition-all outline-none">
+<option>Spending Insights</option>
+<option>Budget Performance</option>
+<option>Investment Summary</option>
+<option>Tax-Ready Export</option>
+</select>
+<span class="material-symbols-outlined absolute right-md top-1/2 -translate-y-1/2 pointer-events-none text-on-surface-variant" data-icon="expand_more"></span>
+</div>
+</div>
+<!-- Date Range Buttons -->
+<div class="space-y-xs pt-sm">
+<label class="font-body-sm text-body-sm text-on-surface-variant px-1">Date Range</label>
+<div class="flex gap-xs">
+<button class="flex-1 py-sm px-md rounded-lg font-label-caps text-label-caps uppercase bg-secondary text-on-secondary shadow-sm transition-all">Month</button>
+<button class="flex-1 py-sm px-md rounded-lg font-label-caps text-label-caps uppercase bg-surface-container-lowest text-on-surface-variant border border-outline-variant hover:bg-surface-variant transition-all">Quarter</button>
+<button class="flex-1 py-sm px-md rounded-lg font-label-caps text-label-caps uppercase bg-surface-container-lowest text-on-surface-variant border border-outline-variant hover:bg-surface-variant transition-all">Year</button>
+</div>
+</div>
+<!-- Family Member Checkboxes -->
+<div class="space-y-xs pt-sm">
+<label class="font-body-sm text-body-sm text-on-surface-variant px-1">Included Members</label>
+<div class="grid grid-cols-2 gap-sm">
+<label class="flex items-center gap-sm p-sm bg-surface-container-lowest border border-outline-variant rounded-lg cursor-pointer">
+<input checked="" class="w-5 h-5 rounded border-outline-variant text-secondary focus:ring-secondary transition-all" type="checkbox"/>
+<span class="font-body-md text-body-md">Primary Account</span>
+</label>
+<label class="flex items-center gap-sm p-sm bg-surface-container-lowest border border-outline-variant rounded-lg cursor-pointer">
+<input checked="" class="w-5 h-5 rounded border-outline-variant text-secondary focus:ring-secondary transition-all" type="checkbox"/>
+<span class="font-body-md text-body-md">Spouse</span>
+</label>
+<label class="flex items-center gap-sm p-sm bg-surface-container-lowest border border-outline-variant rounded-lg cursor-pointer">
+<input class="w-5 h-5 rounded border-outline-variant text-secondary focus:ring-secondary transition-all" type="checkbox"/>
+<span class="font-body-md text-body-md">Child A</span>
+</label>
+<label class="flex items-center gap-sm p-sm bg-surface-container-lowest border border-outline-variant rounded-lg cursor-pointer">
+<input class="w-5 h-5 rounded border-outline-variant text-secondary focus:ring-secondary transition-all" type="checkbox"/>
+<span class="font-body-md text-body-md">Shared Vault</span>
+</label>
+</div>
+</div>
+</div>
+<!-- Automation Section -->
+<div class="bg-surface-container-low p-md rounded-xl space-y-md border border-outline-variant/30">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-secondary" data-icon="auto_awesome"></span>
+<span class="font-body-md text-body-md font-semibold">Report Automation</span>
+</div>
+</div>
+<div class="space-y-sm">
+<div class="flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-body-md text-body-md">Auto-Email PDF</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Send to family admins weekly</span>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only toggle-switch" type="checkbox"/>
+<div class="w-11 h-6 bg-outline-variant rounded-full transition-colors toggle-bg flex items-center p-0.5">
+<div class="w-5 h-5 bg-white rounded-full transition-transform toggle-dot"></div>
+</div>
+</label>
+</div>
+<div class="flex items-center justify-between pt-sm">
+<div class="flex flex-col">
+<span class="font-body-md text-body-md">Archive in Vault</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Store for tax compliance</span>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only toggle-switch" type="checkbox"/>
+<div class="w-11 h-6 bg-outline-variant rounded-full transition-colors toggle-bg flex items-center p-0.5">
+<div class="w-5 h-5 bg-white rounded-full transition-transform toggle-dot"></div>
+</div>
+</label>
+</div>
+</div>
+</div>
+<!-- Report Preview Section -->
+<div class="space-y-sm">
+<p class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider">Draft Preview</p>
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant overflow-hidden">
+<!-- Preview Stats -->
+<div class="p-md bg-surface-container-low/50 border-b border-outline-variant grid grid-cols-3 gap-sm">
+<div class="flex flex-col gap-xs">
+<span class="font-label-caps text-[10px] text-on-surface-variant uppercase">Income</span>
+<span class="font-data-mono text-body-md font-bold text-green-600">$12,450</span>
+</div>
+<div class="flex flex-col gap-xs">
+<span class="font-label-caps text-[10px] text-on-surface-variant uppercase">Expenses</span>
+<span class="font-data-mono text-body-md font-bold text-red-600">$8,210</span>
+</div>
+<div class="flex flex-col gap-xs">
+<span class="font-label-caps text-[10px] text-on-surface-variant uppercase">Savings</span>
+<span class="font-data-mono text-body-md font-bold text-secondary">$4,240</span>
+</div>
+</div>
+<!-- Simplified Spending Chart Preview -->
+<div class="p-md h-48 flex items-end justify-between gap-xs">
+<div class="flex-1 bg-secondary-container/20 rounded-t-lg h-[40%] relative group transition-all hover:bg-secondary/40">
+<div class="absolute -top-6 left-1/2 -translate-x-1/2 hidden group-hover:block font-label-caps text-[10px]">$1.2k</div>
+</div>
+<div class="flex-1 bg-secondary-container/20 rounded-t-lg h-[65%] relative group transition-all hover:bg-secondary/40"></div>
+<div class="flex-1 bg-secondary-container/20 rounded-t-lg h-[85%] relative group transition-all hover:bg-secondary/40"></div>
+<div class="flex-1 bg-secondary-container/20 rounded-t-lg h-[55%] relative group transition-all hover:bg-secondary/40"></div>
+<div class="flex-1 bg-secondary-container/20 rounded-t-lg h-[95%] relative group transition-all hover:bg-secondary/40"></div>
+<div class="flex-1 bg-secondary-container/20 rounded-t-lg h-[70%] relative group transition-all hover:bg-secondary/40"></div>
+<div class="flex-1 bg-secondary-container/20 rounded-t-lg h-[80%] relative group transition-all hover:bg-secondary/40"></div>
+</div>
+<div class="px-md pb-md flex justify-between font-label-caps text-[10px] text-on-surface-variant uppercase">
+<span>Mon</span>
+<span>Tue</span>
+<span>Wed</span>
+<span>Thu</span>
+<span>Fri</span>
+<span>Sat</span>
+<span>Sun</span>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Action Area -->
+<div class="sticky bottom-0 p-md bg-surface-container-lowest border-t border-outline-variant shadow-[0_-8px_20px_rgba(0,0,0,0.05)]">
+<button class="w-full h-14 bg-primary text-on-primary rounded-xl font-headline-md text-[18px] flex items-center justify-center gap-sm active:scale-[0.98] transition-all">
+<span class="material-symbols-outlined" data-icon="picture_as_pdf"></span>
+            Generate PDF Report
+        </button>
+</div>
+<!-- Bottom Navigation Bar (Persistent Shell) -->
+<nav class="md:hidden bg-surface-container-lowest w-full h-16 flex items-center justify-around border-t border-outline-variant">
+<div class="flex flex-col items-center gap-xs cursor-pointer text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="dashboard"></span>
+<span class="font-label-caps text-[10px]">DASHBOARD</span>
+</div>
+<div class="flex flex-col items-center gap-xs cursor-pointer text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="account_balance_wallet"></span>
+<span class="font-label-caps text-[10px]">PAYMENTS</span>
+</div>
+<div class="flex flex-col items-center gap-xs cursor-pointer text-secondary">
+<span class="material-symbols-outlined" data-icon="analytics" style="font-variation-settings: 'FILL' 1;"></span>
+<span class="font-label-caps text-[10px]">REPORTS</span>
+</div>
+<div class="flex flex-col items-center gap-xs cursor-pointer text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="settings"></span>
+<span class="font-label-caps text-[10px]">SETTINGS</span>
+</div>
+</nav>
+<script>
+        // Micro-interaction for the generate button
+        document.querySelector('button.bg-primary').addEventListener('click', function() {
+            const btn = this;
+            const originalContent = btn.innerHTML;
+            btn.innerHTML = `
+                <svg class="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                  <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                  <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+                Processing Report...
+            `;
+            btn.disabled = true;
+            btn.classList.add('opacity-80');
+
+            setTimeout(() => {
+                btn.innerHTML = `
+                    <span class="material-symbols-outlined" data-icon="check_circle"></span>
+                    Ready for Download
+                `;
+                btn.classList.remove('bg-primary');
+                btn.classList.add('bg-green-600');
+                
+                setTimeout(() => {
+                    btn.innerHTML = originalContent;
+                    btn.classList.remove('bg-green-600');
+                    btn.classList.add('bg-primary');
+                    btn.disabled = false;
+                    btn.classList.remove('opacity-80');
+                }, 3000);
+            }, 2000);
+        });
+
+        // Simple button active state toggle for Date Range
+        const dateButtons = document.querySelectorAll('.flex.gap-xs button');
+        dateButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                dateButtons.forEach(b => {
+                    b.classList.remove('bg-secondary', 'text-on-secondary');
+                    b.classList.add('bg-surface-container-lowest', 'text-on-surface-variant', 'border', 'border-outline-variant');
+                });
+                btn.classList.remove('bg-surface-container-lowest', 'text-on-surface-variant', 'border', 'border-outline-variant');
+                btn.classList.add('bg-secondary', 'text-on-secondary');
+            });
+        });
+    </script>
+</body></html>
